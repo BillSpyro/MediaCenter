@@ -11,7 +11,7 @@
 <!-- include header page -->
 <?php
 
-include "Includes/header.php";
+include "includes/header.php";
 ?>
 <!-- welcome page, login, and register link -->
 <section class="home">
@@ -29,6 +29,6 @@ include "Includes/header.php";
 <!-- include footer page -->
 <div id="home-footer">
 <?php
-include "Includes/footer.php"
+include "includes/footer.php"
 ?>
 </div>
