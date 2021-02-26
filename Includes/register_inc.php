@@ -10,6 +10,13 @@ if (isset($_POST["submit"])) {
     
     require_once 'functions_inc.php';
 
+// check if the username is taken
+    if (usernameExists($conn, $username) !== false) {
+        header("location: ../auth/register.php?error=usernametaken");
+
+        exit();
+    } 
+// create the account 
     creatUser($conn, $username, $pwd, $email, $role);
 
 }
