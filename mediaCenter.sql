@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `notifications`;
 
 CREATE TABLE `users` (
   `id` serial UNIQUE NOT NULL,
-  `username` int(11) UNIQUE NOT NULL,
+  `username` varchar(45) UNIQUE NOT NULL,
   `password` varchar(45) NOT NULL,
   `email` varchar(45) UNIQUE NOT NULL,
   `role` varchar(45) NOT NULL,
@@ -77,3 +77,10 @@ CREATE TABLE `notifications` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `users` (id, username, password, email, role)
+VALUES (1, 'Admin', 'Admin', 'admin@gmail.com', 'admin'),
+       (2, 'Joe', 'Mama', 'joemama@gmail.com', 'user'),
+       (3, 'Alebachew', '12345', 'melaku@gmail.com', 'user'),
+       (4, 'Jane', 'Doe', 'janedoe@gmail.com', 'user');
