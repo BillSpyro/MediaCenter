@@ -14,10 +14,6 @@ function creatUser($conn, $username, $pwd, $email, $role) {
     mysqli_stmt_bind_param($stmt, "ssss", $username, $hashedPwd, $email, $role);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../auth/login.php?error=none");
+    header("location: ../auth/login.php");
         exit();
-} 
-
-
-
-
+}
