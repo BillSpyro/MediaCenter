@@ -30,7 +30,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         session_start();
         $_SESSION['id'] = $row[0];
         // header to profile here
-        header("Location: ../index.php");
+        header("Location: ../homepage/index.php");
       }
     }
   }
