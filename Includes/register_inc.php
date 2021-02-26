@@ -1,9 +1,13 @@
 <?php
 
 if (isset($_POST["submit"])) {
+    $firstname = $_POST["first"];
+    $lastname = $_POST["last"];
     $username = $_POST["username"];
     $pwd = $_POST["password"];
     $email = $_POST["email"];
+    $dob = $_POST["dob"];
+    $gender = $_POST["gender"];
     $role = 'user';
     
     require_once 'dbc_inc.php';
@@ -17,7 +21,7 @@ if (isset($_POST["submit"])) {
         exit();
     } 
 // create the account 
-    creatUser($conn, $username, $pwd, $email, $role);
+    creatUser($conn, $firstname, $lastname, $username, $pwd, $email, $dob, $gender, $role);
 
 }
 

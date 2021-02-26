@@ -31,16 +31,16 @@ function usernameExists($conn, $username) {
 
 
 
-function creatUser($conn, $username, $pwd, $email, $role) {
+function creatUser($conn, $firstname, $lastname, $username, $pwd, $email, $dob, $gender, $role) {
 
-    $sql = "INSERT INTO users ( username, password, email, role) VALUES (?,?,?,?);";
+    $sql = "INSERT INTO users ( firstname, lastname, username, password, email, dob, gender, role) VALUES (?,?,?,?,?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../auth/register.php?error=stmtfaild");
         exit();
     }
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "ssss", $username, $hashedPwd, $email, $role);
+    mysqli_stmt_bind_param($stmt, "ssssssss", $firstname, $lastname, $username, $hashedPwd, $email, $dob, $gender, $role);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../auth/login.php?error=none");
