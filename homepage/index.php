@@ -11,7 +11,8 @@
 <!-- include header page -->
 <?php
 
-include "includes/header.php";
+include "../includes/header.php";
+
 ?>
 <!-- welcome page, login, and register link -->
 <section class="home">
@@ -21,14 +22,14 @@ include "includes/header.php";
    <div class="home-log">
        <p>Have an account? Log in.</p>
 
-        <li><a href="../Accounts/loginPage.php">Log In</a></li>
+        <li><a href="../auth/login.php">Log In</a></li>
         <p>Don't have an account? register.</p>
-        <li><a href="../Accounts/registerPage.php">Register</a></li>
+        <li><a href="../auth/register.php">Register</a></li>
 </div>
 </section>
 <!-- include footer page -->
 <div id="home-footer">
 <?php
-include "includes/footer.php"
+include "../includes/footer.php"
 ?>
 </div>
