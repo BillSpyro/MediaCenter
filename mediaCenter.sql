@@ -40,7 +40,7 @@ CREATE TABLE `profile` (
 CREATE TABLE `posts` (
   `id` serial UNIQUE NOT NULL,
   `user_ID` int NOT NULL,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `post_time` datetime NOT NULL,
   `likes` int NOT NULL,
@@ -96,5 +96,5 @@ VALUES (1, 1, null, 'Mr', 'Admin', 'Jr', '71791254321', '2000-07-27', 'male', nu
        (4, 4, null, 'Jane', 'Moe', 'Doe', '717943049', '1987-09-24', 'female', null, 'TX, USA', null, null, 'Married');
 
 INSERT INTO `posts` (id, user_ID, name, content, post_time, likes, dislikes, reposts, video_link)
-VALUES (1, 2, 'My First Post', 'Hello this is my first post.', 9999-12-31 23:59:59, 0, 0, 0, null),
-       (2, 3, 'Hello everyone!', 'My name is Alebachew.', 2021-2-26 15:34:19, 0, 0, 0, null);
+VALUES (1, 2, 'My First Post', 'Hello this is my first post.', '9999-12-31 23:59:59', 0, 0, 0, null),
+       (2, 3, 'Hello everyone!', 'My name is Alebachew.', '2021-2-26 15:34:19', 0, 0, 0, null);
