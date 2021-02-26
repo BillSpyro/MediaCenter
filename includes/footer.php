@@ -26,7 +26,7 @@
     </ul>
   </div>
   <hr>
-  <p class="Copyright">© 2020 Max and Alebachew</p>
+  <p class="Copyright">© 2020 Max and Alebachew and Eric</p>
 
 </footer>
 
