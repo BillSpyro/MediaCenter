@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../script/style.css" rel="stylesheet" type="text/css" />
 
-    <title>Home Page</title>
-</head>
-<body class="home">
-<!-- include header page -->
 <?php
 
 include "Includes/header.php";

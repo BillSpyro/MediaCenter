@@ -20,5 +20,5 @@ include "../includes/header.php";
 <!-- include footer page -->
 <div id="home-footer">
 <?php
-include "includes/footer.php"
+include "../includes/footer.php"
 ?>
