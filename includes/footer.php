@@ -1,9 +1,7 @@
 <!-- basic footer page -->
 
 
-<<<<<<< HEAD:Includes/footer.php
 <div>
-=======
       <li>
         <h4>Social Media</h4>
       </li>
@@ -18,7 +16,6 @@
   <p class="Copyright">© 2020 Max and Alebachew and Eric</p>
 
 </footer>
->>>>>>> 364c381e0081c9b4109e723f735e4780839c480c:includes/footer.php
 
 <h1>Footer</h1>
 </div>
