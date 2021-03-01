@@ -7,13 +7,13 @@ DROP TABLE IF EXISTS `notifications`;
 
 CREATE TABLE `users` (
   `id` serial UNIQUE NOT NULL,
-  `firstname` varchar(225) NOT NULL,
-  `lastname` varchar(225) NOT NULL,
+  `firstname` varchar(225),
+  `lastname` varchar(225),
   `username` varchar(225) UNIQUE NOT NULL,
   `password` varchar(225) NOT NULL,
   `email` varchar(225) UNIQUE NOT NULL,
-  `dob` varchar(45) NOT NULL,
-  `gender` varchar(45) NOT NULL,
+  `dob` varchar(45),
+  `gender` varchar(45),
   `role` varchar(11) NOT NULL,
   `username` varchar(45) UNIQUE NOT NULL,
   `password` varchar(225) NOT NULL,
