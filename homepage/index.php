@@ -1,7 +1,7 @@
 
 <?php
 
-include "../includes/header.php";
+include_once "../includes/header.php";
 
 ?>
 <!-- welcome page, login, and register link -->
