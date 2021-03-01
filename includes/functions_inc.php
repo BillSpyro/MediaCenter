@@ -40,7 +40,7 @@ function creatUser($conn, $firstname, $lastname, $username, $pwd, $email, $dob, 
         exit();
     }
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "ssss", $username, $pwd, $email, $role);
+    mysqli_stmt_bind_param($stmt, "ssss", $username, $hashedPwd, $email, $role);
     mysqli_stmt_execute($stmt);
     
 
