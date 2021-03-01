@@ -8,6 +8,10 @@ include_once '../includes/profile_inc.php';
     <div>
     <h1>Profile</h1>
 
+    <?php if ($_SESSION['id'] == $ID):?>
+    <li><a href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Edit Profile</a></li>
+    <?php endif ?>
+
     <img src="<?php echo $profile_picture ?>" alt="" width="100" height="100">
 
     <h2><?php echo $first_name . " " . $middle_name . " " . $last_name?></h2>
@@ -25,8 +29,20 @@ include_once '../includes/profile_inc.php';
     <p><?php echo $description ?></p>
 
   </div>
+</section>
 
+<section>
+<div>
+<h1>Feed</h1>
 
+</div>
+</section>
+
+<section>
+<div>
+<h1>Friends</h1>
+
+</div>
 </section>
 
 

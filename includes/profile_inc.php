@@ -22,6 +22,7 @@ if ($stmt = $conn->prepare($query)) {
   }
 
   while ($row = $result->fetch_array()) {
+    $ID = $row['id'];
     $profile_picture = $row['profile_picture'];
     $first_name = $row['first_name'];
     $middle_name = $row['middle_name'];
