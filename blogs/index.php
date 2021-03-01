@@ -1,8 +1,8 @@
 
+<!-- include header page -->
 <?php
 
 include "../includes/header.php";
-
 ?>
 <!-- welcome page, login, and register link -->
 <section class="home">
@@ -22,4 +22,3 @@ include "../includes/header.php";
 <?php
 include "../includes/footer.php"
 ?>
-</div>

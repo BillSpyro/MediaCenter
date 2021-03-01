@@ -1,0 +1,57 @@
+html {
+    background-color: var(--web-wash);
+    font-size: 18px;
+    padding-left: 1rem;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
+}
+
+.navs {
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.navs li  {
+    list-style: none;
+}
+.navs li a {
+    text-decoration: none;
+    padding-left: 4rem;
+    color: blue;
+    font-size: 24px;
+}
+
+.register-form, .login-form {
+padding-left: 20rem;
+}
+.register-form input, .login-form input {
+    display: flex;
+    height: 3rem;
+    width: 30rem;
+    margin-top: 1rem;
+    background-color: white;
+    border: 1px solid #2d5dcc;
+    font-size: 20px;;
+    padding-left: 1rem;;
+}
+
+.register-form .submit, .login-form .submit {
+    margin-right: 10rem;
+    width: 31rem;
+    color: darkturquoise;
+    padding-left: 13rem;
+}
+.gender  {
+    display: flex;
+    align-items: center;
+}
+.gender input {
+    width: 6rem;
+}

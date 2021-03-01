@@ -1,20 +1,9 @@
 <!-- basic footer page -->
-<footer>
-  <h3>Contact Us</h3>
-  <div class="contacts">
-    <ul class="social">
-      <li>
-        <h4>Phone Numbers and Addresses</h4>
-      </li>
-      <hr>
-      <li>Cell Phone: *** *** ****</li>
-      <li>House Phone: *** *** ****</li>
-      <li>Email Address: some@yahoo.com</li>
-      <li>Street Address: 2144 Hollinger Road Lancaster, Pa 17602</li>
 
-    </ul>
-    <ul class="Soci">
 
+<<<<<<< HEAD:Includes/footer.php
+<div>
+=======
       <li>
         <h4>Social Media</h4>
       </li>
@@ -29,6 +18,9 @@
   <p class="Copyright">© 2020 Max and Alebachew and Eric</p>
 
 </footer>
+>>>>>>> 364c381e0081c9b4109e723f735e4780839c480c:includes/footer.php
 
+<h1>Footer</h1>
+</div>
 </body>
 </html>
