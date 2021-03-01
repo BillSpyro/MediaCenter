@@ -43,8 +43,12 @@ function creatUser($conn, $firstname, $lastname, $username, $pwd, $email, $dob, 
     mysqli_stmt_bind_param($stmt, "ssssssss", $firstname, $lastname, $username, $hashedPwd, $email, $dob, $gender, $role);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../auth/login.php?error=none");
+    header("location: ../auth/login.php");
         exit();
+<<<<<<< HEAD:Includes/functions_inc.php
 } 
 
 
+=======
+}
+>>>>>>> 364c381e0081c9b4109e723f735e4780839c480c:includes/functions_inc.php
