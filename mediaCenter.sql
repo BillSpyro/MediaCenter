@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `profile`;
 DROP TABLE IF EXISTS `posts`;
@@ -8,9 +7,9 @@ DROP TABLE IF EXISTS `notifications`;
 
 CREATE TABLE `users` (
   `id` serial UNIQUE NOT NULL,
-  `username` varchar(45) UNIQUE NOT NULL,
+  `username` varchar(225) UNIQUE NOT NULL,
   `password` varchar(225) NOT NULL,
-  `email` varchar(45) UNIQUE NOT NULL,
+  `email` varchar(225) UNIQUE NOT NULL,
   `role` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
@@ -79,7 +78,6 @@ CREATE TABLE `notifications` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
 
 INSERT INTO `users` (id, username, password, email, role)
 VALUES (1, 'Admin', '$2y$10$.L1BYSokzecY8cwYmd3e1ulXzrrCr2Stf0xwjIFpOzMZ/kJ3I5g6q', 'admin@gmail.com', 'admin'),
