@@ -39,14 +39,16 @@ if (isset($_GET['friend_ID'])){
   $query = "SELECT * FROM friends WHERE user_ID = ? and friend_ID = ?";
   if ($stmt = $conn->prepare($query)) {
 
-    $stmt->bind_param("ii", $yourID, $friend_ID);
+    $stmt->bind_param("ss", $yourID, $friend_ID);
 
     $stmt->execute();
 
-    $result3 = $stmt->get_result();
+    $stmt->store_result();
+
+    $result3=$stmt->num_rows;
 }
     // if a row exists
-    if ($result3) {
+    if ($result3 > 0) {
       $error = "You are already friends with them or have already sent a request.";
       header("Location: ../profile/people.php?error=$error");
       exit();
@@ -59,6 +61,7 @@ if (isset($_GET['friend_ID'])){
         $stmt->execute();
 
         header("Location: ../profile/people.php");
+        exit();
     }
   }
 }
