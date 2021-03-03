@@ -28,10 +28,10 @@ body {
     font-size: 24px;
 }
 
-.register-form, .login-form {
+.register-form, .login-form, .edit-form {
 padding-left: 20rem;
 }
-.register-form input, .login-form input {
+.register-form input, .login-form input, .edit-form input {
     display: flex;
     height: 3rem;
     width: 30rem;
