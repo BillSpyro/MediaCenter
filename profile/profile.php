@@ -21,8 +21,8 @@ include_once '../includes/profile_inc.php';
     <p>Date of Birth: <?php echo $date_of_birth ?></p>
     <p>Gender: <?php echo $gender ?></p>
     <p>Location: <?php echo $location ?></p>
-    <p>Job: <?php echo $job ?></p>
     <p>Education: <?php echo $education ?></p>
+    <p>Job: <?php echo $job ?></p>
     <p>Relationship Status: <?php echo $relationship_status ?></p>
 
     <h3>Description</h3>

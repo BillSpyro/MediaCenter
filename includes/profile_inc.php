@@ -43,8 +43,4 @@ if ($stmt = $conn->prepare($query)) {
 
 
 
-
-
-
-
 ?>
