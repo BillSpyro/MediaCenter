@@ -7,7 +7,7 @@ if (!$_SESSION['id']) {
 }
 ?>
 
-<form action="includes/post_handler.php" method="post">
+<form action="post_handler.php" method="post">
   <label for="postName">Title:</label>
   <input type="text" name="postName" required>
 
