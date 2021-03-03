@@ -41,7 +41,27 @@ if ($stmt = $conn->prepare($query)) {
 
 }
 
+//Requests
+$query = "SELECT * FROM users, profile, friends WHERE friends.friend_ID = profile.user_id and users.ID = friends.user_ID and users.ID = ? and friends.friends = 0";
+if ($stmt = $conn->prepare($query)) {
 
+  $stmt->bind_param("i", $profileID);
+
+  $stmt->execute();
+
+  $result2 = $stmt->get_result();
+}
+
+//Real Friends
+$query = "SELECT * FROM users, profile, friends WHERE friends.friend_ID = profile.user_id and users.ID = friends.user_ID and users.ID = ? and friends.friends = 1";
+if ($stmt = $conn->prepare($query)) {
+
+  $stmt->bind_param("i", $profileID);
+
+  $stmt->execute();
+
+  $result3 = $stmt->get_result();
+}
 
 
 

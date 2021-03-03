@@ -40,7 +40,26 @@ include_once '../includes/profile_inc.php';
 
 <section>
 <div>
+
 <h1>Friends</h1>
+
+<h2>Requests</h2>
+
+<ul>
+<?php while ($row2 = $result2->fetch_array()):  ?>
+<li><img src="<?php echo $row2['profile_picture'] ?>" alt="" width="100" height="100">
+<a href="../profile/profile.php?ID=<?php echo $row2['friend_ID'] ?>"><?php echo $row2['first_name'] . " " . $row2['middle_name'] . " " . $row2['last_name'] ?></a>
+</li>
+<?php endwhile ?>
+</ul>
+<h2>Real Friends</h2>
+<ul>
+<?php while ($row3 = $result3->fetch_array()):  ?>
+<li><img src="<?php echo $row3['profile_picture'] ?>" alt="" width="100" height="100">
+<a href="../profile/profile.php?ID=<?php echo $row3['friend_ID'] ?>"><?php echo $row3['first_name'] . " " . $row3['middle_name'] . " " . $row3['last_name'] ?></a>
+</li>
+<?php endwhile ?>
+</ul>
 
 </div>
 </section>

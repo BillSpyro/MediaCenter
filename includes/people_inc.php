@@ -22,10 +22,11 @@ if ($stmt = $conn->prepare($query)) {
   }
 }
 
-$query = "SELECT * FROM friends WHERE user_ID = ? or friend_ID = ?";
+//Check if already sent
+$query = "SELECT * FROM friends WHERE user_ID = ?";
 if ($stmt = $conn->prepare($query)) {
 
-  $stmt->bind_param("ss", $yourID, $yourID);
+  $stmt->bind_param("i", $yourID);
 
   $stmt->execute();
 
@@ -47,7 +48,7 @@ if (isset($_GET['friend_ID'])){
 
     $result3=$stmt->num_rows;
 }
-    // if a row exists
+    // if a row exists dont insert
     if ($result3 > 0) {
       $error = "You are already friends with them or have already sent a request.";
       header("Location: ../profile/people.php?error=$error");
@@ -60,9 +61,16 @@ if (isset($_GET['friend_ID'])){
 
         $stmt->execute();
 
+      $query = "INSERT INTO friends (user_ID, friend_ID) VALUES (?,?)";
+      if ($stmt = $conn->prepare($query)) {
+
+        $stmt->bind_param("ss", $friend_ID, $yourID);
+
+        $stmt->execute();
+
         header("Location: ../profile/people.php");
         exit();
-    }
+    }}
   }
 }
 ?>

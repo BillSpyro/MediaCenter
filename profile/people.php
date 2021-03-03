@@ -26,26 +26,18 @@ include_once '../includes/people_inc.php';
     </form>
 
     <h2>Results</h2>
+
     <ul>
-    <?php while ($row2 = $result2->fetch_array()):  ?>
     <?php while ($row = $result->fetch_array()):  ?>
     <li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100">
     <a href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a>
-    <?php if ($row2['friends'] == 0): ?>
     <a href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a>
-    <?php else: ?>
-    <span>Request sent</span>
-    <?php endif ?>
     </li>
-    <?php endwhile ?>
     <?php endwhile ?>
     </ul>
 
   </div>
 </section>
-
-
-
 
 <!-- include footer page -->
 <div id="home-footer">
