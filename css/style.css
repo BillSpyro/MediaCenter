@@ -91,7 +91,16 @@ li a.home-login {
     width: 332px;
 }
 
+/* profile page css style */
+.profile-picture {
+    border: white solid 2px;
+    border-radius: 50%;
+}
 
+.pic-name {
+    padding-left: 20rem;
+    background-color:beige;
+}
 
 
 

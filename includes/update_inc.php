@@ -39,6 +39,7 @@ $sql = "UPDATE profile SET  profile_picture = ?, first_name = ?, middle_name = ?
 
  
 }
+}
 
 else  {
     echo "didn't submit yet";
