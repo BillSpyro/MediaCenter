@@ -40,6 +40,13 @@ include_once '../includes/profile_inc.php';
 
 <section>
 <div>
+<h1><a href="posts.php">My Posts</a></h1>
+
+</div>
+</section>
+
+<section>
+<div>
 <h1>Friends</h1>
 
 </div>
