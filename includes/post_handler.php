@@ -15,7 +15,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
     $stmt->execute();
     $stmt->close();
     mysqli_close($conn);
-    header("Location: ../profile/profile.php";
+    header("Location: ../profile/profile.php?ID=$userId");
     // header("Location: link to user's feed goes here");
   }
 }
