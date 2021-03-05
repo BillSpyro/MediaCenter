@@ -12,6 +12,7 @@ include_once '../includes/profile_inc.php';
             <label for="image">profile Image</label>
             <input type="file" name="image">
             <label for="first">First Name</label>
+
             <input type="text" name="first" value="<?php echo $first_name;?>" required>
             <label for="middle">Middle Name</label>
             <input type="text" name="middle" value="<?php echo $middle_name;?>" required>
@@ -30,8 +31,10 @@ include_once '../includes/profile_inc.php';
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label>
             </div>
+
             <label for="description">Bio/description</label>
             <input type="text" name="description" value="<?php echo $description;?>" required>
+
             <label for="location">Locatione</label>
             <input type="text" name="location" value="<?php echo $location;?>" required>
             <label for="job">Job</label>
@@ -46,6 +49,7 @@ include_once '../includes/profile_inc.php';
             <label for="merried">Married</label>
             </div>
             <input class="submit" type="submit" name="submit"  />
+
         </form>
 
     </div>

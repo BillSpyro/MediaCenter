@@ -1,4 +1,5 @@
 <?php
+include_once 'dbc_inc.php';
 
 if (isset($_POST["submit"])) {
     $firstname = $_POST["first"];

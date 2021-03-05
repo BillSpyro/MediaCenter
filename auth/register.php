@@ -5,7 +5,7 @@ include_once '../includes/header.php';
 
 ?>
 <section>
-    <div class="register">
+    <div>
     <h1>Sign Up</h1>
     <p>It’s quick and easy.</p>
         <form class="register-form" action="../includes/register_inc.php" method="POST">
@@ -14,7 +14,6 @@ include_once '../includes/header.php';
             <input type="text" name="username" placeholder="username" required>
             <input type="password" name="password" placeholder="password" required>
             <input type="text" name="email" placeholder="email" required>
-            <p>Birthday:</p>
             <input type="date" name="dob" placeholder="Borthday" required>
             <p>Please select your gender:</p>
             <div class="gender">
@@ -26,7 +25,7 @@ include_once '../includes/header.php';
             <label for="other">Other</label>
             </div>
             <input class="submit" type="submit" name="submit"  />
-            
+
         </form>
     </div>
 </section>
