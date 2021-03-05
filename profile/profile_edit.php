@@ -7,9 +7,12 @@ include_once '../includes/profile_inc.php';
 ?>
 <section>
     <div>
-    <h1>Edit</h1>
-    <form class="edit-form" action="../includes/update_inc.php" method="POST">
-        <label for="first">First Name</label>
+    <h1>Update Your Profile</h1>
+    <form class="edit-form" action="../includes/update_inc.php" method="POST" enctype="multipart/form-data">
+            <label for="image">profile Image</label>
+            <input type="file" name="image">
+            <label for="first">First Name</label>
+
             <input type="text" name="first" value="<?php echo $first_name;?>" required>
             <label for="middle">Middle Name</label>
             <input type="text" name="middle" value="<?php echo $middle_name;?>" required>
@@ -28,7 +31,7 @@ include_once '../includes/profile_inc.php';
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label>
             </div>
-            
+
             <label for="description">Bio/description</label>
             <input type="text" name="description" value="<?php echo $description;?>" required>
 
