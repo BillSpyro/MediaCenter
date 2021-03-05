@@ -70,7 +70,9 @@ if (isset($_GET['friend_ID'])){
 
         header("Location: ../profile/people.php");
         exit();
-    }}
+    }
+  }
   }
 }
+
 ?>

@@ -63,7 +63,98 @@ if ($stmt = $conn->prepare($query)) {
   $result3 = $stmt->get_result();
 }
 
+//Handles accepting or decline friend requests and removing friends
+if (isset($_GET['friend'])){
+  $request = $_GET['friend'];
+  $yourID = $_SESSION['id'];
+  $friendID = $_GET['friend_ID'];
 
+  //Accepting a friend request
+  if($request == 'accept'){
+  $query = "UPDATE friends SET friends = 1 WHERE user_ID = ? and friend_ID = ?";
+  if ($stmt = $conn->prepare($query)) {
+
+    $stmt->bind_param("ii", $yourID, $friendID);
+
+    $stmt->execute();
+
+    }
+
+    $query = "UPDATE friends SET friends = 1 WHERE user_ID = ? and friend_ID = ?";
+    if ($stmt = $conn->prepare($query)) {
+
+      $stmt->bind_param("ii", $friendID, $yourID);
+
+      $stmt->execute();
+
+      }
+
+  header("Location: ../profile/profile.php?ID=$yourID");
+  exit();
+
+//Declining a friend request
+} elseif ($request == 'decline') {
+  $query = "DELETE FROM friends WHERE user_ID = ? and friend_ID = ?";
+  if ($stmt = $conn->prepare($query)) {
+
+    $stmt->bind_param("ii", $yourID, $friendID);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+  }
+
+    $query = "DELETE FROM friends WHERE user_ID = ? and friend_ID = ?";
+    if ($stmt = $conn->prepare($query)) {
+
+      $stmt->bind_param("ii", $friendID, $yourID);
+
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+
+}
+
+  header("Location: ../profile/profile.php?ID=$yourID");
+  exit();
+
+//Removing a friend
+} elseif ($request == 'remove'){
+
+  $query = "DELETE FROM friends WHERE user_ID = ? and friend_ID = ? and friends = 1";
+  if ($stmt = $conn->prepare($query)) {
+
+    $stmt->bind_param("ii", $yourID, $friendID);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+  }
+
+    $query = "DELETE FROM friends WHERE user_ID = ? and friend_ID = ? and friends = 1";
+    if ($stmt = $conn->prepare($query)) {
+
+      $stmt->bind_param("ii", $friendID, $yourID);
+
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+
+}
+
+header("Location: ../profile/profile.php?ID=$yourID");
+exit();
+
+//Error if none above happens
+} else {
+  $error = "An error occured.";
+  header("Location: ../auth/login.php?error=$error");
+  exit();
+}
+
+
+
+}
 
 
 
