@@ -17,22 +17,18 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $result = $stmt->get_result();
 
-    // if no row exists
-    if (!$result) {
-      $error = "Some of your information was not correct.";
-      header("Location: ../auth/login.php?error=$error");
-      exit();
-    }
-
     while ($row = $result->fetch_row()) {
 
-      if ($username == $row[1] && password_verify($password, $row[2])) {
+      if (password_verify($password, $row[2])) {
         session_start();
         $_SESSION['id'] = $row[0];
-        // header to profile here
-        header("Location: ../homepage/index.php");
+        header('Location: ../homepage/index.php');
+        exit();
       }
     }
+    $error = "Some of your information is not correct.";
+    header("Location: ../auth/login.php?error=$error");
+    exit();
   }
 }
 ?>
