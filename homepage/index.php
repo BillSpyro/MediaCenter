@@ -12,9 +12,20 @@ include "../includes/header.php";
    <div class="home-log">
        <p>Have an account? Log in.</p>
 
-        <li><a href="../auth/login.php">Log In</a></li>
+        <li><a class="home-login" href="../auth/login.php">Log In</a></li>
         <p>Don't have an account? register.</p>
+<<<<<<< Updated upstream
         <li><a href="../auth/register.php">Register</a></li>
+=======
+        <li><a class="home-register" href="../auth/register.php">Register</a></li>
+<?php else: ?>
+<li><a href="../profile/profile.php?ID=<?php echo $_SESSION['id']?>">Your Profile</a></li>
+
+<?php endif ?>
+
+
+
+>>>>>>> Stashed changes
 </div>
 </section>
 <!-- include footer page -->

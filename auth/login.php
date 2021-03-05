@@ -16,7 +16,7 @@ include_once '../includes/header.php';
   <span><?php echo $error; ?></span>
   <?php endif ?>
 
-  <form action="../includes/login_inc.php" method="post">
+  <form class="login-form" action="../includes/login_inc.php" method="post">
 
     <label for="username">Username:</label>
     <input type="text" name="username" required>
@@ -24,7 +24,7 @@ include_once '../includes/header.php';
     <label for="password">Password:</label>
     <input type="text" name="password" required>
 
-    <input type="submit">
+    <input class="submit" type="submit">
 
   </form>
 
