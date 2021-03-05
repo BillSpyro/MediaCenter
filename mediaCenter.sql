@@ -52,6 +52,7 @@ CREATE TABLE `friends` (
   `id` serial UNIQUE NOT NULL,
   `user_ID` int NOT NULL,
   `friend_ID` int NOT NULL,
+  `friends` boolean DEFAULT false,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
