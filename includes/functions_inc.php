@@ -1,6 +1,5 @@
 <!-- <?php
 require_once 'dbc_inc.php';
-
 // creatusers function
 
 function usernameExists($conn, $username) {
@@ -73,3 +72,6 @@ function creatUser($conn, $firstname, $lastname, $username, $pwd, $email, $dob, 
     header("location: ../auth/login.php");
         exit();
 } 
+
+// update prfile page
+
