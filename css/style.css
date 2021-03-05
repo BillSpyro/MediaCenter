@@ -28,10 +28,10 @@ body {
     font-size: 24px;
 }
 
-.register-form, .login-form {
+.register-form, .login-form, .edit-form {
 padding-left: 20rem;
 }
-.register-form input, .login-form input {
+.register-form input, .login-form input, .edit-form input {
     display: flex;
     height: 3rem;
     width: 30rem;
@@ -43,9 +43,12 @@ padding-left: 20rem;
 }
 
 .register-form .submit, .login-form .submit {
+    background-color: #1877f2;
+    
+    border-radius: 6px;
     margin-right: 10rem;
     width: 31rem;
-    color: darkturquoise;
+    color: white;
     padding-left: 13rem;
 }
 .gender  {
@@ -54,4 +57,69 @@ padding-left: 20rem;
 }
 .gender input {
     width: 6rem;
+}
+
+/* home page style */
+
+.home {
+    padding-left: 10rem;
+}
+.home li {
+    list-style: none;
+    
+}
+li a.home-login {
+    color: white;
+    background-color: #1877f2;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 332px;
+}
+.home-register {
+    color: white;
+    background-color: #42b72a;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 332px;
+}
+
+
+
+
+
+
+/* footer page style */
+footer {
+    margin-top: 2rem;
+}
+footer h3 {
+    text-align: center;
+}
+.contacts {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer li, footer a  {
+    color: #1877f2;
+    list-style: none;
+}
+footer a {
+    text-decoration: none;
+}
+footer a:hover{
+    text-decoration: underline;
+}
+
+
+.Copyright {
+    text-align: center;
 }
