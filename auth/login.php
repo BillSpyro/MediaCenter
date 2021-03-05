@@ -22,7 +22,7 @@ include_once '../includes/header.php';
     <input type="text" name="username" required>
 
     <label for="password">Password:</label>
-    <input type="text" name="password" required>
+    <input type="password" name="password" required>
 
     <input class="submit" type="submit">
 
