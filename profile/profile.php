@@ -50,33 +50,21 @@ include_once '../includes/profile_inc.php';
       </tr>
     </table>
   
-
     </div>
   </div>
-</section>
+
 <div class="freinds-info">
 
 <div class="feed">
-<h1>Feed</h1>
+  
+<h1>Feeds</h1>
+<a href="posts.php">My Posts</a>
 </div>
-</section>
 
-
-
-<div class="friends">
-
-<section>
-<div>
-
-<h1><a href="posts.php">My Posts</a></h1>
-
-</div>
-</section>
-
-<section>
 <div>
 <h1>Friends</h1>
 </div>
+
 <div class="friend-requests">
 <h2>Requests</h2>
 
@@ -105,9 +93,9 @@ include_once '../includes/profile_inc.php';
 
 
 </div>
-
-</section>
 </div>
+</section>
+
 
 <?php
 
