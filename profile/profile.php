@@ -13,7 +13,7 @@ include_once '../includes/profile_inc.php';
     <h2><?php echo $first_name . " " . $middle_name . " " . $last_name?></h2>
     <p><?php echo $description ?></p>
     <?php if ($_SESSION['id'] == $ID):?>
-    <li><a class="edit-profile--link" href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Edit Profile</a></li>
+    <li><a class="edit-profile--link" href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Update Your Profile</a></li>
     <?php endif ?>
     </div>
   <div id="table-about">
@@ -58,12 +58,9 @@ include_once '../includes/profile_inc.php';
 <div class="feed">
   
 <h1>Feeds</h1>
-<a href="posts.php">My Posts</a>
+
 </div>
 
-<div>
-<h1>Friends</h1>
-</div>
 
 <div class="friend-requests">
 <h2>Requests</h2>
