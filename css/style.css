@@ -92,7 +92,6 @@ li a.home-login {
 }
 
 
-/* profile page css style */
 .profile-picture {
     border: white solid 2px;
     border-radius: 50%;
@@ -169,6 +168,12 @@ li a.home-login {
 
 .friend-requests a:nth-child(4):hover, .real-friends a:nth-child(3):hover {
     background: brown;
+}
+
+
+.pic-name {
+    padding-left: 20rem;
+    background-color:beige;
 }
 
 

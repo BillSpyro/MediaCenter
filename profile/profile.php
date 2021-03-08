@@ -50,6 +50,7 @@ include_once '../includes/profile_inc.php';
       </tr>
     </table>
   
+
     </div>
   </div>
 </section>
@@ -64,6 +65,16 @@ include_once '../includes/profile_inc.php';
 
 <div class="friends">
 
+<section>
+<div>
+
+<h1><a href="posts.php">My Posts</a></h1>
+
+</div>
+</section>
+
+<section>
+<div>
 <h1>Friends</h1>
 </div>
 <div class="friend-requests">
@@ -90,6 +101,8 @@ include_once '../includes/profile_inc.php';
 </li>
 <?php endwhile ?>
 </ul>
+
+
 
 </div>
 

@@ -19,6 +19,8 @@ include_once "../includes/header.php";
 
 <?php else: ?>
 <li><a href="../profile/profile.php?ID=<?php echo $_SESSION['id']?>">Your Profile</a></li>
+<li><a href="../profile/people.php">Look for People</a></li>
+<?php include_once "../profile/create_post.php"; ?>
 
 <?php endif ?>
 
