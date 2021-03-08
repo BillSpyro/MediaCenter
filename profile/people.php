@@ -20,20 +20,20 @@ if (isset($_POST['search'])) {
       }else {
         $sql_firstName = " and p.first_name = '$first_name'";
       }
-      /*
+
       if (empty($middle_name)){
-          $sql_middleName = " and p.middle_name LIKE '$middle_name%'";
+          $sql_middleName = " and (p.middle_name LIKE '$middle_name%' OR p.middle_name IS NULL)";
         }else {
           $sql_middleName = " and p.middle_name = '$middle_name'";
         }
-        */
+
         if (empty($last_name)){
             $sql_lastName = " and p.last_name LIKE '$last_name%'";
           }else {
             $sql_lastName = " and p.last_name = '$last_name'";
           }
 
-    $sql = $sql_base . $sql_firstName  . $sql_lastName;
+    $sql = $sql_base . $sql_firstName  . $sql_middleName . $sql_lastName;
 
     $query = $sql;
     if ($stmt = $conn->prepare($query)) {
