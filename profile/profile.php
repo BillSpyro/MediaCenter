@@ -9,7 +9,7 @@ include_once '../includes/profile_inc.php';
     <div class="pic-name">
     <h1>Profile</h1>
 
-    
+
 
     <img class="profile-picture" src="<?php echo $profile_picture ?>" alt="" width="100" height="100">
 
@@ -50,9 +50,10 @@ include_once '../includes/profile_inc.php';
 
 <section>
 <div>
-  
+
 <h1>Friends</h1>
 
+<?php if ($_SESSION['id'] == $ID):?>
 <h2>Requests</h2>
 
 <ul>
@@ -64,12 +65,18 @@ include_once '../includes/profile_inc.php';
 </li>
 <?php endwhile ?>
 </ul>
+
+<?php endif ?>
+
 <h2>Real Friends</h2>
+
 <ul>
 <?php while ($row3 = $result3->fetch_array()):  ?>
 <li><img src="<?php echo $row3['profile_picture'] ?>" alt="" width="100" height="100">
 <a href="../profile/profile.php?ID=<?php echo $row3['friend_ID'] ?>"><?php echo $row3['first_name'] . " " . $row3['middle_name'] . " " . $row3['last_name'] ?></a>
+<?php if ($_SESSION['id'] == $ID):?>
 <a href="../profile/profile.php?friend=<?php echo 'remove' ?>&friend_ID=<?php echo $row3['friend_ID'] ?>">Remove</a>
+<?php endif ?>
 </li>
 <?php endwhile ?>
 </ul>

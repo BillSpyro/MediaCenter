@@ -40,7 +40,7 @@ if (isset($_GET['friend_ID'])){
   $query = "SELECT * FROM friends WHERE user_ID = ? and friend_ID = ?";
   if ($stmt = $conn->prepare($query)) {
 
-    $stmt->bind_param("ss", $yourID, $friend_ID);
+    $stmt->bind_param("ss", $friend_ID, $yourID);
 
     $stmt->execute();
 
@@ -54,12 +54,6 @@ if (isset($_GET['friend_ID'])){
       header("Location: ../profile/people.php?error=$error");
       exit();
     } else {
-      $query = "INSERT INTO friends (user_ID, friend_ID) VALUES (?,?)";
-      if ($stmt = $conn->prepare($query)) {
-
-        $stmt->bind_param("ss", $yourID, $friend_ID);
-
-        $stmt->execute();
 
       $query = "INSERT INTO friends (user_ID, friend_ID) VALUES (?,?)";
       if ($stmt = $conn->prepare($query)) {
@@ -71,7 +65,7 @@ if (isset($_GET['friend_ID'])){
         header("Location: ../profile/people.php");
         exit();
     }
-  }
+
   }
 }
 
