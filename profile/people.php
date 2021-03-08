@@ -7,29 +7,33 @@ include_once '../includes/people_inc.php';
 //Searching for people
 if (isset($_POST['search'])) {
 
+  $yourID = $_SESSION['id'];
+
     $first_name = $_POST['first_name'];
     $middle_name = $_POST['middle_name'];
     $last_name = $_POST['last_name'];
 
-    $sql_base = "SELECT * FROM users u, profile p WHERE u.id = p.user_ID";
+    $sql_base = "SELECT * FROM users u, profile p WHERE u.id = p.user_ID and u.ID != $yourID";
 
     if (empty($first_name)){
         $sql_firstName = " and p.first_name LIKE '$first_name%'";
       }else {
         $sql_firstName = " and p.first_name = '$first_name'";
       }
+      /*
       if (empty($middle_name)){
           $sql_middleName = " and p.middle_name LIKE '$middle_name%'";
         }else {
           $sql_middleName = " and p.middle_name = '$middle_name'";
         }
+        */
         if (empty($last_name)){
             $sql_lastName = " and p.last_name LIKE '$last_name%'";
           }else {
             $sql_lastName = " and p.last_name = '$last_name'";
           }
 
-    $sql = $sql_base . $sql_firstName . $sql_middleName . $sql_lastName;
+    $sql = $sql_base . $sql_firstName  . $sql_lastName;
 
     $query = $sql;
     if ($stmt = $conn->prepare($query)) {
@@ -67,8 +71,8 @@ header("Location: ../profile/people.php");
       <label for="last_name">last name:</label>
       <input type="text" name="last_name">
 
-      <input class="save" name="search" type="submit" value="search">
-      <input class="save" name="showall" type="submit" value="Show all">
+      <input class="save" name="search" type="submit" value="Search">
+      <input class="save" name="showall" type="submit" value="Show All">
 
     </form>
 
