@@ -14,7 +14,7 @@ if ($_SESSION['id'] && isset($_POST['comment'])) {
     $stmt->bind_param('iiss', $userId, $postId, $dateTime, $comment);
     $stmt->execute();
     $stmt->close();
-    header("Location: ../profile/posts.php");
+    header("Location: ../posts/posts.php");
     exit();
   }
 }
