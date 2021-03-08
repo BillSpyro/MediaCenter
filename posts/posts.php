@@ -50,12 +50,20 @@ if ($_SESSION['id']) {
         if ($_SESSION['id'] == $userId) {
         printf(<<<EOT
         <section>
-          <a href="../posts/edit_comment.php">Edit</a>
           <p>You commented on <span>%s:</span></p>
+          <p>%s</p>
+          <a href="../posts/edit_comment.php">Edit</a>
+        <section>
+        EOT, $posted_date, $content);
+      } else {
+        printf(<<<EOT
+        <section>
+          <p>%s commented on <span>%s:</span></p>
           <p>%s</p>
         <section>
         EOT, $username, $posted_date, $content);
-        }
+      }
+
       }
     }
   }

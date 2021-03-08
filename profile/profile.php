@@ -9,7 +9,7 @@ include_once '../includes/profile_inc.php';
     <div class="pic-name">
     <h1>Profile</h1>
 
-    
+
 
     <img class="profile-picture" src="<?php echo $profile_picture ?>" alt="" width="100" height="100">
 
@@ -43,14 +43,14 @@ include_once '../includes/profile_inc.php';
 <section>
 <div>
 
-<h1><a href="posts.php">My Posts</a></h1>
+<h1><a href="../posts/posts.php">My Posts</a></h1>
 
 </div>
 </section>
 
 <section>
 <div>
-  
+
 <h1>Friends</h1>
 
 <h2>Requests</h2>
