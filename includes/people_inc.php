@@ -4,7 +4,7 @@ include_once 'dbc_inc.php';
 
 $yourID = $_SESSION['id'];
 
-// prepare a query to check username and password
+//Search everyone except yourself
 $query = "SELECT * FROM users, profile WHERE users.id = profile.user_ID and users.id != ?";
 if ($stmt = $conn->prepare($query)) {
 
