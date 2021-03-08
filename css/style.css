@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-color: #fff;
+    background-color: whitesmoke;
     color: #000;
 }
 
@@ -91,14 +91,96 @@ li a.home-login {
     width: 332px;
 }
 
+<<<<<<< Updated upstream
 
+=======
+/* profile page css style */
+.profile-picture {
+    border: white solid 2px;
+    border-radius: 50%;
+}
+.profile a {
+    background: royalblue;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.profile li {
+    list-style: none;
+}
+
+.profile {
+    background-color:beige;
+}
+.table-about {
+    background-color: #fff;
+    ;
+}
+.table-about td:first-child {
+    border-right: 1px solid black;
+    border-collapse: collapse;
+}
+.table-about td:nth-child(2) {
+    width: 20rem;
+}
+
+.table-about td {
+    padding: 0.5rem;
+}
+.profile {
+    display: flex;
+    justify-content: space-around;
+}
+.freinds-info {
+    display: flex;
+    justify-content: space-around;
+}
+.freinds-info h2, .freinds-info h1{
+    color: black;
+}
+.freinds-info img {
+    border-radius: 50%;
+    margin-top: 2rem;
+   
+}
+.freinds-info li {
+    list-style: none;
+}
+.freinds-info a {
+    text-decoration: none;
+    padding: 0.3rem;
+    color: black;
+    font-weight: bold;
+    
+}
+.freinds-info a:first-child {
+    background: none;
+}
+
+.friend-requests a:nth-child(3) {
+    color: white;
+    background: royalblue;
+}
+.friend-requests a:nth-child(3):hover {
+    background: darkblue;
+}
+.friend-requests a:nth-child(4), .real-friends a:nth-child(3) {
+    color: white;
+    background: saddlebrown;
+}
+
+.friend-requests a:nth-child(4):hover, .real-friends a:nth-child(3):hover {
+    background: brown;
+}
+
+>>>>>>> Stashed changes
 
 
 
 
 /* footer page style */
 footer {
-    margin-top: 2rem;
+    margin-top: 10rem;
 }
 footer h3 {
     text-align: center;
