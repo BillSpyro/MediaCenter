@@ -16,6 +16,7 @@ if (isset($_GET['id']) && isset($_SESSION['id'])) {
       echo "<section>";
       if ($userId == $postCreator) {
         printf('<a href="../posts/edit_post.php?postid=%s">Edit Post</a>', $postId);
+        printf('<a href="../includes/delete_post.php?postId=%s">Delete Post</a>', $postId);
       }
       printf(<<<EOT
         <h1>%s</h1>
