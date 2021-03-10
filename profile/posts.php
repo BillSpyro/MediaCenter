@@ -19,10 +19,53 @@ if ($_SESSION['id']) {
         <p>Likes: %s Dislikes: %s Reposts: %s</p>
         <a href="edit_post.php?postid=%s">Edit</a>
       </section>
+      
       EOT, $name, $postTime, $content, $likes, $dislikes, $reposts, $id);
+      ?>
+   <div>
+      <form action="posts.php" method="post">
+        <input type="submit" name="Like" value="Like">
+      </form>
+      <p>0 people liked your post</p>
+  </div>
+      <?php
     }
   }
 }
 
 include_once "../includes/footer.php";
 ?>
+
+
+<?php
+$user_id = $_SESSION['id'];
+
+if(isset($_POST["Like"])) {
+
+  $sql_postId = "SELECT post_ID FROM users, profile, posts, likes WHERE likes.post_ID = posts.id and posts.user_ID = profile.user_ID and profile.user_ID = users_id and users.id = ?";
+if ($stmt = $conn->prepare($sql_postId)) {
+
+  $stmt->bind_param("i", $user_id);
+
+  $stmt->execute();
+
+  $post_id = $stmt->get_result();
+}
+
+
+  $query = "UPDATE likes SET likes = 1 WHERE user_ID = ? and post_ID = ?";
+  if ($stmt = $conn->prepare($query)) {
+
+    $stmt->bind_param("ii", $user_id, $post_id);
+
+    $stmt->execute();
+    echo "success";
+    exit();
+    }else{
+      echo "something goes wrong";
+    }
+}
+
+
+?>
+
