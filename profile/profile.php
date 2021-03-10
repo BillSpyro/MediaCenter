@@ -55,6 +55,14 @@ include_once '../includes/profile_inc.php';
 
 <div class="freinds-info">
 
+</div>
+</section>
+
+<section>
+<div>
+
+<h1><a href="../posts/posts.php">My Posts</a></h1>
+  
 <div class="feed">
 
 <h1>Feeds</h1>

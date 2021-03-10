@@ -11,5 +11,5 @@ if (isset($_POST['postId']) && isset($_POST['postName']) && isset($_POST['postCo
   }
 }
 mysqli_close($conn);
-header("Location: ../profile/posts.php");
+header("Location: ../posts/posts.php");
 ?>
