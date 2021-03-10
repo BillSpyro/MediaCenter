@@ -40,6 +40,7 @@ $up = 0;
 while ($row2 = $result2->fetch_array()){
   echo $row2['user_ID'];
   array_push($requestCheck, $row2['user_ID']);
+  print_r($requestCheck);
   array_push($friendCheck, $row2['friends']);
 }
 
