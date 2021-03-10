@@ -23,7 +23,7 @@ if ($stmt = $conn->prepare($query)) {
 }
 
 //Check if already sent
-$query = "SELECT * FROM friends WHERE user_ID = ?";
+$query = "SELECT * FROM friends WHERE friend_ID = ? ORDER BY user_ID";
 if ($stmt = $conn->prepare($query)) {
 
   $stmt->bind_param("i", $yourID);
@@ -31,6 +31,16 @@ if ($stmt = $conn->prepare($query)) {
   $stmt->execute();
 
   $result2 = $stmt->get_result();
+}
+
+$requestCheck = array();
+$friendCheck = array();
+$up = 0;
+
+while ($row2 = $result2->fetch_array()){
+  echo $row2['user_ID'];
+  array_push($requestCheck, $row2['user_ID']);
+  array_push($friendCheck, $row2['friends']);
 }
 
 //Send Friend Request

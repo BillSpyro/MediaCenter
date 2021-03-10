@@ -82,8 +82,15 @@ header("Location: ../profile/people.php");
     <?php while ($row = $result->fetch_array()):  ?>
     <li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100">
     <a href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a>
+    <?php if ($friendCheck[$up] == 1): ?>
+    <span>Friends</span>
+    <?php elseif ($requestCheck[$up] == $row['id']): ?>
+    <span>Request Sent</span>
+    <?php else: ?>
     <a href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a>
+    <?php endif ?>
     </li>
+    <?php $up += 1; ?>
     <?php endwhile ?>
     </ul>
 
