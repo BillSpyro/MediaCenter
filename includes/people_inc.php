@@ -22,11 +22,19 @@ if ($stmt = $conn->prepare($query)) {
   }
 }
 
+//Previous Queries
+// $query = "SELECT DISTINCT friends.user_ID, friends.friends FROM users LEFT JOIN friends ON friends.user_ID = users.id WHERE users.id != ? ORDER BY users.id";
+// SELECT * FROM users LEFT JOIN friends ON friends.friend_ID = users.id WHERE (friends.user_ID != 3 OR friends.user_ID is NULL) and (friends.friend_ID = 3 OR friends.friend_ID is NULL) ORDER BY users.ID
+// $query = "SELECT DISTINCT users.username, friends.friend_ID, friends.friends FROM users LEFT JOIN friends ON friends.friend_ID = users.id WHERE users.id != ? ORDER BY users.id";
+// SELECT * FROM friends RIGHT JOIN users ON friends.user_ID = users.ID WHERE (friends.friend_ID = 3 OR friend_ID is NULL) and users.ID != 3 ORDER BY users.ID
+// SELECT * FROM friends RIGHT JOIN users ON friends.user_ID = users.ID WHERE (friends.friend_ID = 3 OR friend_ID is NULL) and users.ID != 3 OR friends.user_ID = 3 ORDER BY users.ID
+// SELECT * FROM friends RIGHT JOIN users ON friends.user_ID = users.ID WHERE (friends.friend_ID = 1 OR friend_ID is NULL) and users.ID != 1 AND (friends.user_ID != 1 OR friends.friends = 1) ORDER BY users.ID
+
 //Check if already sent
-$query = "SELECT * FROM friends WHERE friend_ID = ? ORDER BY user_ID";
+$query = "SELECT * FROM friends RIGHT JOIN users ON friends.user_ID = users.ID WHERE (friends.friend_ID = ? OR friend_ID is NULL) and users.ID != ? AND (friends.user_ID != ? OR friends.friends = 1 OR friends.friends IS NULL) ORDER BY users.ID";
 if ($stmt = $conn->prepare($query)) {
 
-  $stmt->bind_param("i", $yourID);
+  $stmt->bind_param("iii", $yourID, $yourID, $yourID);
 
   $stmt->execute();
 
@@ -38,9 +46,7 @@ $friendCheck = array();
 $up = 0;
 
 while ($row2 = $result2->fetch_array()){
-  echo $row2['user_ID'];
   array_push($requestCheck, $row2['user_ID']);
-  print_r($requestCheck);
   array_push($friendCheck, $row2['friends']);
 }
 
