@@ -78,30 +78,17 @@ header("Location: ../profile/people.php");
 
     <h2>Results</h2>
 
-<<<<<<< HEAD
     
         
 <?php while ($row = $result->fetch_array()):  ?>
 <div class="peoples">
+  
   <div class="people">
     <div><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100"></div>
     <div><a class="name-peole" href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a></div>
     <div><a class="send-request" href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a></div>
   </div>
 
-=======
-    <ul>
-    <?php while ($row = $result->fetch_array()):  ?>
-      <div class="people">
-        <div class="peoples">
-          <div><img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100"></div>
-          <div><a class="name-people" href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a></div>
-          <div><a class="send-request" href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a></div>
-      </div>
-    <?php endwhile ?>
-    </ul>
-  </div>
->>>>>>> html-layout
   </div>
 <?php endwhile ?>
       
