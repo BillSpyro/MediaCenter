@@ -256,10 +256,10 @@ justify-content: center;
 }
 
 /* people page css */
-.people {
+.peoples {
     display: flex;
     flex-direction: column;
-
+  
     
 }
 .peoples div {
@@ -287,13 +287,13 @@ a.name-people:hover {
     text-decoration: underline;
 }
 
-.peoples {
+.people {
     padding-left: 1rem;
     padding-right: 1rem;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 1rem;
     background: white;
-    width: 300px;
+    width: 250px;
     box-shadow: 0 2px 4px 0 rgb(10 0 0 / 20%);
 }
 
