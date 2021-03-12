@@ -1,4 +1,3 @@
-
 <?php
 
 include_once '../includes/header.php';
@@ -13,7 +12,7 @@ include_once '../includes/profile_inc.php';
     <h2><?php echo $first_name . " " . $middle_name . " " . $last_name?></h2>
     <p><?php echo $description ?></p>
     <?php if ($_SESSION['id'] == $ID):?>
-    <li><a class="edit-profile--link" href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Update Your Profile</a></li>
+    <li><a class="edit-profile--link" href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Edit Profile</a></li>
     <?php endif ?>
     </div>
   <div id="table-about">
@@ -52,29 +51,30 @@ include_once '../includes/profile_inc.php';
 
     </div>
   </div>
-
-<div class="freinds-info">
-
-</div>
 </section>
 
 <section>
-<div>
+<div class="freinds-info">
 
-<h1><a href="../posts/posts.php">My Posts</a></h1>
+
+
+
+
   
-<div class="feed">
-
+<div>
 <h1>Feeds</h1>
 
+<h1><a href="../posts/posts.php">My Posts</a></h1>
 </div>
 
 <div>
 
 <h1>Friends</h1>
-</div>
 
+</div>
+<div class="friend-requests">
 <?php if ($_SESSION['id'] == $ID):?>
+
 <h2>Requests</h2>
 
 <ul>
@@ -88,6 +88,9 @@ include_once '../includes/profile_inc.php';
 </ul>
 
 <?php endif ?>
+</div>
+
+<div class="real-friends">
 <h2>Real Friends</h2>
 
 <ul>
@@ -100,11 +103,11 @@ include_once '../includes/profile_inc.php';
 </li>
 <?php endwhile ?>
 </ul>
-
-
-
 </div>
 </div>
+
+</div>
+
 </section>
 
 
