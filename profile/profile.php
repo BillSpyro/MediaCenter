@@ -91,7 +91,6 @@ include_once '../includes/profile_inc.php';
 </div>
 
 <div class="real-friends">
-
 <h2>Real Friends</h2>
 
 <ul>

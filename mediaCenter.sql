@@ -31,7 +31,8 @@ CREATE TABLE `profile` (
   `education` varchar(45),
   `relationship_status` varchar(45),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  FOREIGN KEY (user_ID) REFERENCES users(id)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `posts` (
@@ -45,7 +46,8 @@ CREATE TABLE `posts` (
   `reposts` int NOT NULL,
   `video_link` varchar(255),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  FOREIGN KEY (user_ID) REFERENCES users(id)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `friends` (
