@@ -3,7 +3,6 @@
 
 include_once "../includes/header.php";
 include_once "../includes/dbc_inc.php";
-
 ?>
 <!-- welcome page, login, and register link -->
 <section class="home">
@@ -19,7 +18,8 @@ include_once "../includes/dbc_inc.php";
         <li><a class="home-register" href="../auth/register.php">Register</a></li>
 
 <?php else: ?>
-
+<li><a href="../profile/profile.php?ID=<?php echo $_SESSION['id']?>">Your Profile</a></li>
+<li><a href="../profile/people.php">Look for People</a></li>
 <?php include_once "../profile/create_post.php"; ?>
 <?php
 

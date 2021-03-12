@@ -62,9 +62,10 @@ CREATE TABLE `friends` (
 CREATE TABLE `comments` (
   `id` serial UNIQUE NOT NULL,
   `user_ID` int NOT NULL,
-  `post_ID` int NOT NULL,
-  `profile_ID` int NOT NULL,
-  `comment_ID` int NOT NULL,
+  `post_ID` int,
+  `profile_ID` int,
+  `comment_ID` int,
+  `posted_date` datetime NOT NULL,
   `content` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
@@ -97,3 +98,7 @@ VALUES (1, 1, null, 'Mr', 'Admin', 'Jr', '71791254321', '2000-07-27', 'male', nu
 INSERT INTO `posts` (id, user_ID, name, content, post_time, likes, dislikes, reposts, video_link)
 VALUES (1, 2, 'My First Post', 'Hello this is my first post.', '9999-12-31 23:59:59', 0, 0, 0, null),
        (2, 3, 'Hello everyone!', 'My name is Alebachew.', '2021-2-26 15:34:19', 0, 0, 0, null);
+
+INSERT INTO `comments` (user_ID, post_ID, profile_ID, comment_ID, posted_date, content)
+VALUES (1, 1, NULL, NULL, "2021-3-4 16:00:00", "Test Comment 1"),
+       (3, 1, NULL, NULL, "2021-3-6 12:00:00", "Test Comment 2");
