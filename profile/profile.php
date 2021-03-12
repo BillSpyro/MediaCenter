@@ -13,13 +13,13 @@ include_once '../includes/profile_inc.php';
     <h2><?php echo $first_name . " " . $middle_name . " " . $last_name?></h2>
     <p><?php echo $description ?></p>
     <?php if ($_SESSION['id'] == $ID):?>
-    <li><a class="edit-profile--link" href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Edit Profile</a></li>
+    <li><a class="edit-profile--link" href="../profile/profile_edit.php?ID=<?php echo $ID ?>">Update Your Profile</a></li>
     <?php endif ?>
     </div>
   <div id="table-about">
     <h3>About</h3>
     <table class="table-about">
-      
+
       <tr>
         <td>Phone Number:</td>
         <td><?php echo $phone ?></td>
@@ -49,23 +49,32 @@ include_once '../includes/profile_inc.php';
         <td><?php echo $relationship_status ?></td>
       </tr>
     </table>
-  
+
     </div>
   </div>
 
 <div class="freinds-info">
 
-<div class="feed">
+</div>
+</section>
+
+<section>
+<div>
+
+<h1><a href="../posts/posts.php">My Posts</a></h1>
   
+<div class="feed">
+
 <h1>Feeds</h1>
-<a href="posts.php">My Posts</a>
+
 </div>
 
 <div>
+
 <h1>Friends</h1>
 </div>
 
-<div class="friend-requests">
+<?php if ($_SESSION['id'] == $ID):?>
 <h2>Requests</h2>
 
 <ul>
@@ -77,15 +86,17 @@ include_once '../includes/profile_inc.php';
 </li>
 <?php endwhile ?>
 </ul>
-</div>
 
-<div class="real-friends">
+<?php endif ?>
 <h2>Real Friends</h2>
+
 <ul>
 <?php while ($row3 = $result3->fetch_array()):  ?>
 <li><img src="<?php echo $row3['profile_picture'] ?>" alt="" width="100" height="100">
-<p><a href="../profile/profile.php?ID=<?php echo $row3['friend_ID'] ?>"><?php echo $row3['first_name'] . " " . $row3['middle_name'] . " " . $row3['last_name'] ?></a></p>
+<a href="../profile/profile.php?ID=<?php echo $row3['friend_ID'] ?>"><?php echo $row3['first_name'] . " " . $row3['middle_name'] . " " . $row3['last_name'] ?></a>
+<?php if ($_SESSION['id'] == $ID):?>
 <a href="../profile/profile.php?friend=<?php echo 'remove' ?>&friend_ID=<?php echo $row3['friend_ID'] ?>">Remove</a>
+<?php endif ?>
 </li>
 <?php endwhile ?>
 </ul>

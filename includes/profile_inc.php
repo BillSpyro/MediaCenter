@@ -80,14 +80,13 @@ if (isset($_GET['friend'])){
 
     }
 
-    $query = "UPDATE friends SET friends = 1 WHERE user_ID = ? and friend_ID = ?";
+    $query = "INSERT INTO friends (user_ID, friend_ID, friends) VALUES (?,?,1)";
     if ($stmt = $conn->prepare($query)) {
 
       $stmt->bind_param("ii", $friendID, $yourID);
 
       $stmt->execute();
-
-      }
+  }
 
   header("Location: ../profile/profile.php?ID=$yourID");
   exit();
@@ -103,17 +102,6 @@ if (isset($_GET['friend'])){
 
     $result = $stmt->get_result();
   }
-
-    $query = "DELETE FROM friends WHERE user_ID = ? and friend_ID = ?";
-    if ($stmt = $conn->prepare($query)) {
-
-      $stmt->bind_param("ii", $friendID, $yourID);
-
-      $stmt->execute();
-
-      $result = $stmt->get_result();
-
-}
 
   header("Location: ../profile/profile.php?ID=$yourID");
   exit();
