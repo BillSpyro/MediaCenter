@@ -186,9 +186,9 @@ header("Location: ../profile/people.php");
     </div>
 
   </div>
-<?php endwhile ?>
 
-    </div>
+
+  </div>
 
 
 </section>
