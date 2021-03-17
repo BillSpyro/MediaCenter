@@ -61,9 +61,7 @@ padding-left: 20rem;
 
 /* home page style */
 
-.home {
-    padding-left: 10rem;
-}
+
 .home li {
     list-style: none;
     
@@ -92,6 +90,49 @@ li a.home-login {
 }
 
 
+
+/* home page for posts css */
+
+.header-post {
+    display: flex;
+    margin-top: 2rem;
+    margin-left: auto;
+}
+
+.image img {
+    border: 2px rosybrown solid ;
+    border-radius: 50%;
+}
+.name-time {
+    padding-left: 1rem;
+}
+.name-time p {
+   font-weight: bold;
+}
+
+.name-time span {
+    color: royalblue;
+}
+.posts {
+display: flex;
+justify-content: center;
+
+}
+
+.post {
+    background-color: white;
+    margin-top: 2rem;
+    width: 600px;
+    padding-left: 1rem;
+    box-shadow: 2px 2px 4px 2px rgb(10 0 0 / 20%);
+    border-radius: 10px;
+}
+
+
+
+/* profile page css */
+
+
 .profile-picture {
     border: white solid 2px;
     border-radius: 50%;
@@ -108,6 +149,7 @@ li a.home-login {
 
 .profile {
     background-color:beige;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
 }
 .table-about {
     background-color: #fff;
@@ -173,10 +215,148 @@ li a.home-login {
 
 .pic-name {
     padding-left: 20rem;
-    background-color:beige;
+    
+}
+/* post page css */
+.post-form--div {
+    display: flex;
+    justify-content: center;
+}
+.post-form  {
+    
+    background-color: white;
+    width: 600px;
+    border-radius: 10px;
+    padding: 1rem 1rem 1rem 1rem;
+    box-shadow: 2px 2px 4px 2px rgb(10 0 0 / 20%);
+}
+
+.post-form input{
+    display: block;
+    width: 250px;
+    margin-bottom: 1rem;
+    border: 1px solid rosybrown;
+}
+
+.post-form .submit {
+    width: 260px;
+    background: royalblue;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem;
+}
+.table-about {
+    background-color: #fff;
+    ;
+}
+.table-about td:first-child {
+    border-right: 1px solid black;
+    border-collapse: collapse;
+}
+.table-about td:nth-child(2) {
+    width: 20rem;
+}
+
+.table-about td {
+    padding: 0.5rem;
+}
+.profile {
+    display: flex;
+    justify-content: space-around;
+}
+.freinds-info {
+    display: flex;
+    justify-content: space-around;
+}
+.freinds-info h2, .freinds-info h1{
+    color: black;
+}
+.freinds-info img {
+    border-radius: 50%;
+    margin-top: 2rem;
+   
+}
+.freinds-info li {
+    list-style: none;
+}
+.freinds-info a {
+    text-decoration: none;
+    padding: 0.3rem;
+    color: black;
+    font-weight: bold;
+    
+}
+.freinds-info a:first-child {
+    background: none;
+}
+
+.friend-requests a:nth-child(3) {
+    color: white;
+    background: royalblue;
+}
+.friend-requests a:nth-child(3):hover {
+    background: darkblue;
+}
+.friend-requests a:nth-child(4), .real-friends a:nth-child(3) {
+    color: white;
+    background: saddlebrown;
+}
+
+.friend-requests a:nth-child(4):hover, .real-friends a:nth-child(3):hover {
+    background: brown;
 }
 
 
+.title {
+    padding-bottom: 1rem;
+}
+
+.body {
+    padding-bottom: 4rem;
+}
+
+/* people page css */
+.peoples {
+    display: flex;
+    flex-direction: column;
+  
+    
+}
+.peoples div {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.peoples  a {
+    text-decoration: none;
+}
+a.send-request {
+    background: #483D8B;
+    color: white;
+    padding: 0.4rem;
+}
+a.send-request:hover {
+    background-color: #6A5ACD;
+}
+
+a.name-people {
+    color: black;
+    font-weight: bold;
+}
+a.name-people:hover {
+    text-decoration: underline;
+}
+
+.people {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex-direction: row;
+    margin-top: 1rem;
+    background: white;
+    width: 250px;
+    box-shadow: 0 2px 4px 0 rgb(10 0 0 / 20%);
+}
 
 
 
@@ -184,9 +364,11 @@ li a.home-login {
 footer {
     margin-top: 10rem;
 }
+
 footer h3 {
     text-align: center;
 }
+
 .contacts {
     display: flex;
     justify-content: space-around;
@@ -196,9 +378,11 @@ footer li, footer a  {
     color: #1877f2;
     list-style: none;
 }
+
 footer a {
     text-decoration: none;
 }
+
 footer a:hover{
     text-decoration: underline;
 }

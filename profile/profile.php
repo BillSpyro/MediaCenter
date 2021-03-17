@@ -1,4 +1,3 @@
-
 <?php
 
 include_once '../includes/header.php';
@@ -52,21 +51,30 @@ include_once '../includes/profile_inc.php';
 
     </div>
   </div>
+</section>
 
+<section>
 <div class="freinds-info">
 
-<div class="feed">
 
+
+
+
+  
+<div>
 <h1>Feeds</h1>
-<a href="posts.php">My Posts</a>
+
+<h1><a href="../posts/posts.php">My Posts</a></h1>
 </div>
 
 <div>
 
 <h1>Friends</h1>
-</div>
 
+</div>
+<div class="friend-requests">
 <?php if ($_SESSION['id'] == $ID):?>
+
 <h2>Requests</h2>
 
 <ul>
@@ -80,23 +88,26 @@ include_once '../includes/profile_inc.php';
 </ul>
 
 <?php endif ?>
+</div>
+
+<div class="real-friends">
 <h2>Real Friends</h2>
 
 <ul>
 <?php while ($row3 = $result3->fetch_array()):  ?>
 <li><img src="<?php echo $row3['profile_picture'] ?>" alt="" width="100" height="100">
-<a href="../profile/profile.php?ID=<?php echo $row3['friend_ID'] ?>"><?php echo $row3['first_name'] . " " . $row3['middle_name'] . " " . $row3['last_name'] ?></a>
+<p><a href="../profile/profile.php?ID=<?php echo $row3['friend_ID'] ?>"><?php echo $row3['first_name'] . " " . $row3['middle_name'] . " " . $row3['last_name'] ?></a></p>
 <?php if ($_SESSION['id'] == $ID):?>
 <a href="../profile/profile.php?friend=<?php echo 'remove' ?>&friend_ID=<?php echo $row3['friend_ID'] ?>">Remove</a>
 <?php endif ?>
 </li>
 <?php endwhile ?>
 </ul>
-
-
-
 </div>
 </div>
+
+</div>
+
 </section>
 
 

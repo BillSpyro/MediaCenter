@@ -168,6 +168,8 @@ header("Location: ../profile/people.php");
 
     <ul>
     <?php while ($row = $result->fetch_array()):  ?>
+      <div class="peoples">
+        <div class="people">
     <li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100">
     <a href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a>
     <?php if (isset($friendCheck[$up]) && $friendCheck[$up] == 1): ?>
@@ -181,8 +183,14 @@ header("Location: ../profile/people.php");
     <?php $up += 1; ?>
     <?php endwhile ?>
     </ul>
+    </div>
 
   </div>
+<?php endwhile ?>
+
+    </div>
+
+
 </section>
 
 <!-- include footer page -->
