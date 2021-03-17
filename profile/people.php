@@ -78,16 +78,23 @@ header("Location: ../profile/people.php");
 
     <h2>Results</h2>
 
-    <ul>
-    <?php while ($row = $result->fetch_array()):  ?>
-    <li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100">
-    <a href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a>
-    <a href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a>
-    </li>
-    <?php endwhile ?>
-    </ul>
+    
+        
+<?php while ($row = $result->fetch_array()):  ?>
+<div class="peoples">
+  
+  <div class="people">
+    <div><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100"></div>
+    <div><a class="name-peole" href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a></div>
+    <div><a class="send-request" href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a></div>
+  </div>
 
   </div>
+<?php endwhile ?>
+      
+    </div>
+
+
 </section>
 
 <!-- include footer page -->
