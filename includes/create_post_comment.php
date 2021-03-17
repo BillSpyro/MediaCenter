@@ -1,9 +1,9 @@
 <?php
-session_start();
 include_once "../includes/dbc_inc.php";
+session_start();
 
 // if they're logged in and have posted a comment
-if ($_SESSION['id'] && isset($_POST['comment'])) {
+if (isset($_SESSION['id']) && isset($_POST['comment'])) {
   $userId = $_SESSION['id'];
   $postId = $_POST['postId'];
   $comment = $_POST['comment'];
@@ -14,7 +14,7 @@ if ($_SESSION['id'] && isset($_POST['comment'])) {
     $stmt->bind_param('iiss', $userId, $postId, $dateTime, $comment);
     $stmt->execute();
     $stmt->close();
-    header("Location: ../posts/posts.php");
+    header("Location: ../posts/view_post.php?id=$postId");
     exit();
   }
 }
