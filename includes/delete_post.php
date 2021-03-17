@@ -1,8 +1,10 @@
 <?php
+session_start();
 include_once "../includes/dbc_inc.php";
 
 if (isset($_GET['postId'])) {
   $postId = $_GET['postId'];
+  $userId = $_SESSION['id'];
 
   $query = "DELETE FROM posts WHERE id = ?;";
   if ($stmt = $conn->prepare($query)) {
@@ -16,7 +18,7 @@ if (isset($_GET['postId'])) {
       $stmt->execute();
       $stmt->close();
 
-      header("Location: ../posts/posts.php");
+      header("Location: ../profile/profile.php?ID=$userId");
       exit();
     }
   }

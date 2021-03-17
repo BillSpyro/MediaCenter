@@ -2,6 +2,7 @@
 include_once "../includes/dbc_inc.php";
 if (isset($_GET['commentId'])) {
   $commentId = $_GET['commentId'];
+  $postId = $_GET['postId'];
 
   $query = "DELETE FROM comments WHERE id = ?;";
   if ($stmt = $conn->prepare($query)) {
@@ -9,7 +10,7 @@ if (isset($_GET['commentId'])) {
     $stmt->execute();
     $stmt->close();
 
-    header("Location: ../posts/posts.php");
+    header("Location: ../posts/view_post.php?id=$postId");
     exit();
   }
 }
