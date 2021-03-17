@@ -58,13 +58,14 @@ include_once '../includes/profile_inc.php';
 
 
 
+<div class="feed">
 
 
-  
+
 <div>
 <h1>Feeds</h1>
-
-<h1><a href="../posts/posts.php">My Posts</a></h1>
+<!-- Two buttons here, post and comment, clicking on one reloads the page and shows what was picked. Default is post -->
+<?php include_once "../posts/posts.php"; ?>
 </div>
 
 <div>

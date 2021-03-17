@@ -1,5 +1,4 @@
 <?php
-include_once "../includes/header.php";
 include_once "../includes/dbc_inc.php";
 
 // sql here for all posts in descending order
@@ -20,6 +19,4 @@ if ($_SESSION['id']) {
     }
   }
 }
-
-include_once "../includes/footer.php";
 ?>

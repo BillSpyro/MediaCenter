@@ -13,10 +13,10 @@ if ($stmt = $conn->prepare($query)) {
     <section>
       <p>You commented on <span>%s:</span></p>
       <p>%s</p>
-      <a href="../posts/edit_comment.php">Edit Comment</a>
-      <a href="../includes/delete_comment.php?commentId=%s">Delete Comment</a>
+      <a href="../posts/edit_comment.php?commentId=%s&oldContent=%s&postId=%s">Edit Comment</a>
+      <a href="../includes/delete_comment.php?commentId=%s&postId=%s">Delete Comment</a>
     <section>
-    EOT, $posted_date, $content, $commentId);
+    EOT, $posted_date, $content, $commentId, $content, $postId, $commentId, $postId);
   } else {
     printf(<<<EOT
     <section>
