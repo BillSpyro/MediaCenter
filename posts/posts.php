@@ -17,9 +17,64 @@ if ($_SESSION['id']) {
         <p>Posted: %s</p>
       </section>
       EOT, $id, $name, $postTime);
+?>
+      <div>
+    <div>
+      <form action="posts.php" method="post">
+        <input type="text" name="postId" value="<?php echo $id?>" hidden>
+        <input type="submit" name="Like" value="Like">
+      </form>
+      <p>0 people liked your post</p>
+  </div>
+</div>
+
+<?php
     }
   }
+
 }
+?>
+
+<?php
+
+$user_id = $_SESSION['id'];
+
+echo $user_id;
+if(isset($_POST["Like"])) {
+  $post_id = $_POST["postId"]; 
+  echo $post_id;
+  $sql_rate = "SELECT likes.likes FROM users, likes, posts WHERE likes.post_ID = posts.id and likes.user_ID  = users.id and users.id = '$user_id' and posts.id = '$post_id';";
+  
+  $result = $conn->query($sql_rate);
+
+  if (!empty($result) && $result->num_rows > 0) {
+    echo "you are already liked the video";
+    exit();
+  } else {
+    
+    $rate_value = 1;
+    
+    
+    $query = "INSERT INTO likes (user_ID, post_ID, profile_ID, likes) VALUES (?, ?, ?, ?);";
+    if ($stmt = $conn->prepare($query)) {
+
+      $stmt->bind_param("iiii", $user_id, $post_id, $user_id, $rate_value);
+
+      $stmt->execute();
+      echo "success";
+      $stmt->close();
+      
+      }
+    }
+  
+    $conn->close();
+}
+
+
+?>
+
+<?php
+
 
 include_once "../includes/footer.php";
 ?>
