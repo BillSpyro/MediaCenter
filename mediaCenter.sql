@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `profile`;
 DROP TABLE IF EXISTS `posts`;
 DROP TABLE IF EXISTS `friends`;
 DROP TABLE IF EXISTS `comments`;
+DROP TABLE IF EXISTS `likes`;
 DROP TABLE IF EXISTS `notifications`;
 
 CREATE TABLE `users` (
