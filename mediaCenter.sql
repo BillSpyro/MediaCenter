@@ -84,12 +84,13 @@ CREATE TABLE `likes` (
 
 CREATE TABLE `notifications` (
   `id` serial UNIQUE NOT NULL,
-  `post_ID` int NOT NULL,
-  `profile_ID` int NOT NULL,
-  `comment_ID` int NOT NULL,
-  `friend_ID` int NOT NULL,
+  `post_ID` int,
+  `profile_ID` int,
+  `comment_ID` int,
+  `friend_ID` int,
   `user_ID` int NOT NULL,
-  `alerted` boolean NOT NULL,
+  `notification_time` datetime NOT NULL,
+  `alerted` boolean,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
