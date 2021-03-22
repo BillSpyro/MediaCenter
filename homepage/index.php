@@ -14,25 +14,25 @@ include_once "../includes/dbc_inc.php";
         <li><a class="home-login" href="../auth/login.php">Log In</a></li>
         <p>Don't have an account? register.</p>
         <li><a class="home-register" href="../auth/register.php">Register</a></li>
-    <?php else: 
-        
+    <?php else:
+
         $user_id = $_SESSION['id'];
-        
+
         ?>
-      
+
     <?php include_once "../posts/create_post.php"; ?>
 
 
-    
+
     <?php
     $query = "SELECT * FROM profile, posts WHERE posts.user_ID = profile.user_ID ORDER BY post_time DESC";
     $result = $conn->query($query);
     ?>
     <?php while ($row = $result->fetch_array()):  ?>
-        
+
     <div class="posts">
         <div class="post">
-            <div class="header-post">   
+            <div class="header-post">
                 <div class="image">
                     <img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100">
                 </div>
@@ -44,6 +44,7 @@ include_once "../includes/dbc_inc.php";
             <div>
                 <h2><?php echo $row["name"]?></h2>
                 <p><?php echo $row["content"]?></p>
+                <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
             </div>
             <?php $id = $row["id"];?>
             <div>
@@ -61,19 +62,19 @@ include_once "../includes/dbc_inc.php";
                 </div>
                 <?php
 
-                $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';"; 
+                $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';";
                 $result1 = $conn->query($sql_rate_count);
                 if ($result1->num_rows > 0) {
                     while($row = $result1->fetch_assoc()) {
                         $numberOfLikes = $row['NumberOfLikes'];
                          echo "<? id='likes'>total likes  . $numberOfLikes</?>";
-                        }       
+                        }
                 }else {
                     echo "0 results";
                 }
                 ?>
                 </div>
-            </div> 
+            </div>
             <hr>
             <section>
                 <form class="comment-form" action="../includes/create_post_comment.php" method="POST">
@@ -83,16 +84,16 @@ include_once "../includes/dbc_inc.php";
                 </form>
       </section>
         </div>
-        
-        
+
+
     </div>
 
     <?php endwhile ?>
-    
+
 
     <?php endif ?>
     <?php
-    
+
     if(isset($_POST["Like"])) {
         $post_id = $_POST["postId"];
         $sql_rate = "SELECT likes.likes FROM users, likes, posts WHERE likes.post_ID = posts.id and likes.user_ID  = users.id and users.id = '$user_id' and posts.id = '$post_id';";
@@ -134,7 +135,7 @@ include_once "../includes/dbc_inc.php";
         success: function() {
             }
         });
-    }); 
+    });
 });
 </script>
 
