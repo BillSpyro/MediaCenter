@@ -54,30 +54,20 @@ include_once '../includes/profile_inc.php';
 </section>
 
 <section>
+  <!-- friend status div -->
 <div class="freinds-info">
-
-
-
+<!-- my posts div -->
 <div class="feed">
-
-
-
-<div>
 <h1>Feeds</h1>
 <!-- Two buttons here, post and comment, clicking on one reloads the page and shows what was picked. Default is post -->
 <?php include_once "../posts/posts.php"; ?>
-</div>
-
-<div>
-
-<h1>Friends</h1>
 
 </div>
+
+<!--  friends requests div -->
 <div class="friend-requests">
 <?php if ($_SESSION['id'] == $ID):?>
-
 <h2>Requests</h2>
-
 <ul>
 <?php while ($row2 = $result2->fetch_array()):  ?>
 <li><img src="<?php echo $row2['profile_picture'] ?>" alt="" width="100" height="100">
@@ -87,13 +77,11 @@ include_once '../includes/profile_inc.php';
 </li>
 <?php endwhile ?>
 </ul>
-
 <?php endif ?>
 </div>
-
+<!-- real friends div -->
 <div class="real-friends">
 <h2>Real Friends</h2>
-
 <ul>
 <?php while ($row3 = $result3->fetch_array()):  ?>
 <li><img src="<?php echo $row3['profile_picture'] ?>" alt="" width="100" height="100">
@@ -105,7 +93,7 @@ include_once '../includes/profile_inc.php';
 <?php endwhile ?>
 </ul>
 </div>
-</div>
+
 
 </div>
 
