@@ -1,6 +1,5 @@
 html {
     background-color: var(--web-wash);
-    font-size: 18px;
     padding-left: 1rem;
 }
 
@@ -128,7 +127,72 @@ justify-content: center;
     border-radius: 10px;
 }
 
+/* home page for comments  */
+.header-comment {
+    display: flex;
+    margin-top: 2rem;
+    margin-left: auto;
+}
 
+.header-comment  img {
+    margin-top: 1rem;
+    border: 2px royalblue solid ;
+    border-radius: 50%;
+}
+
+.single-comment {
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+}
+.comment p {
+    font-weight: normal;
+}
+.comment {
+    background-color: #F0F8FF;
+    width: 400px;
+    border-radius: 20px;
+    padding-left: 1rem;
+}
+
+/* .comments {
+    display: none;
+} */
+
+.total_likes_comments {
+    display: flex;
+    justify-content: space-around;
+    color: royalblue;
+    font-size: 20;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.submit-button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.like-image {
+    width: 40px;
+    height: 40px;
+}
+.comment-form {
+    padding-bottom: 1rem;
+   
+}
+
+.comment-form input:nth-child(2) {
+    border: solid 1px white;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 400px;
+    background-color:#F5F5F5;
+}
+
+.comment-form input:nth-child(3) {
+    border-radius: 5px;;
+    padding: 0.5rem;
+    
+}
 
 /* profile page css */
 
@@ -331,10 +395,16 @@ justify-content: center;
 .peoples  a {
     text-decoration: none;
 }
+.people li{
+    list-style: none;
+}
 a.send-request {
     background: #483D8B;
     color: white;
     padding: 0.4rem;
+}
+.people span {
+    color: green;
 }
 a.send-request:hover {
     background-color: #6A5ACD;
