@@ -21,3 +21,6 @@ if ($stmt = $conn->prepare($query)) {
     exit();
   }
 }
+
+
+?>

@@ -1,6 +1,7 @@
 <?php
 // establish DB connection
 include_once 'dbc_inc.php';
+include_once "create_notification_inc.php";
 
 $yourID = $_SESSION['id'];
 
@@ -123,6 +124,8 @@ if (isset($_GET['friend_ID'])){
         $stmt->bind_param("ss", $friend_ID, $yourID);
 
         $stmt->execute();
+
+        createNotification('Friend Request', $yourID, $friend_ID);
 
         header("Location: ../profile/people.php");
         exit();

@@ -13,7 +13,7 @@ include_once '../includes/notification_inc.php';
 
     <ul>
       <?php while ($row = $result->fetch_array()):  ?>
-        <p><?php echo $row['notification_time'] . " " . $row['id'] ?></p>
+        <p><?php echo $row['type'] . " was sent to you on " . $row['notification_time'] . " " . $row['id'] ?></p>
       <?php endwhile ?>
     </ul>
 
