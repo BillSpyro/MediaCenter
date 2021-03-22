@@ -107,6 +107,8 @@ if (isset($_GET['friend'])){
     $result = $stmt->get_result();
   }
 
+  createNotification('Friend Decline', $yourID, $friendID);
+
   header("Location: ../profile/profile.php?ID=$yourID");
   exit();
 
@@ -133,6 +135,8 @@ if (isset($_GET['friend'])){
       $result = $stmt->get_result();
 
 }
+
+createNotification('Friend Remove', $yourID, $friendID);
 
 header("Location: ../profile/profile.php?ID=$yourID");
 exit();

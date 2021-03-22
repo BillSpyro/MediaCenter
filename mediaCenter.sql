@@ -86,6 +86,7 @@ CREATE TABLE `notifications` (
   `id` serial UNIQUE NOT NULL,
   `post_ID` int,
   `profile_ID` int,
+  `like_ID` int,
   `comment_ID` int,
   `friend_ID` int,
   `user_ID` int NOT NULL,
