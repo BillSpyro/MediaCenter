@@ -44,7 +44,9 @@ include_once "../includes/dbc_inc.php";
             <div>
                 <h2><?php echo $row["name"]?></h2>
                 <p><?php echo $row["content"]?></p>
+                <?php if ($row['user_ID'] != $_SESSION['id']): ?>
                 <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
+                <?php endif; ?>
             </div>
             <?php $id = $row["id"];?>
             <div>

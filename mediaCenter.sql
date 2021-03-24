@@ -47,6 +47,7 @@ CREATE TABLE `posts` (
   `reposts` int NOT NULL,
   `video_link` varchar(255),
   `share_ref` int,
+  `share_user_ref` int,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   FOREIGN KEY (user_ID) REFERENCES users(id)
