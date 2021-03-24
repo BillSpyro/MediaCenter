@@ -31,7 +31,23 @@ if (isset($_SESSION['id']) && isset($_POST['comment'])) {
       }
     }
 
-    createNotification('Comment', $userId, $ownerID, $postId);
+    //Getting ID of the comment that was made
+    $query = "SELECT * FROM comments WHERE user_ID = ? and post_ID = ? and content = ? and posted_date = ?";
+    if ($stmt = $conn->prepare($query)) {
+
+      $stmt->bind_param("iiss", $userId, $postId, $comment, $dateTime);
+
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+
+      while ($row = $result->fetch_array()) {
+        $commentID = $row['id'];
+      }
+    }
+
+
+    createNotification('Comment', $commentID, $ownerID, $postId);
 
     header("Location: ../posts/view_post.php?id=$postId");
     exit();

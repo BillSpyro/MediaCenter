@@ -34,10 +34,10 @@ include_once '../includes/notification_inc.php';
           <p><a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> liked your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a></p>
         <?php elseif ($row['type'] == 'Comment'): ?>
           <?php
-          $query = "SELECT * FROM profile, posts, comments WHERE comments.user_ID = ? and profile.user_ID = comments.user_ID and posts.id = ? and comments.post_ID = posts.id";
+          $query = "SELECT * FROM profile, posts, comments WHERE comments.id = ? and profile.user_ID = comments.user_ID and comments.post_ID = posts.id";
           if ($stmt = $conn->prepare($query)) {
 
-            $stmt->bind_param("ii", $row['comment_ID'], $row['post_ID']);
+            $stmt->bind_param("i", $row['comment_ID']);
 
             $stmt->execute();
 
