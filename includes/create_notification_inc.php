@@ -22,7 +22,6 @@ function createNotification($type, $user_ID, $other = null, $optional = null) {
   if(!$conn) {
       die("Connection failed: " .mysqli_connect_error());
   }
-//DB Connnection
 
 //Grab variables
 $dateTime = date('Y-m-d H:i:s');

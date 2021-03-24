@@ -92,6 +92,7 @@ CREATE TABLE `notifications` (
   `user_ID` int NOT NULL,
   `notification_time` datetime NOT NULL,
   `type` varchar(45),
+  `viewed` boolean DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

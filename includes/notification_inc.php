@@ -4,7 +4,7 @@ include_once 'dbc_inc.php';
 
 $yourID = $_GET['ID'];
 
-// prepare a query to check username and password
+// Grab notifications for the user
 $query = "SELECT * FROM notifications WHERE user_ID = ? ORDER BY notification_time DESC";
 if ($stmt = $conn->prepare($query)) {
 
