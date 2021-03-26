@@ -48,13 +48,18 @@ if (isset($_GET['postId'])) {
       }
     }
 
-    $query = "INSERT INTO `posts` (user_ID, name, content, post_time, likes, dislikes, reposts, video_link, share_ref) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $query = "INSERT INTO `posts` (user_ID, name, content, post_time, likes, dislikes, reposts, video_link, share_ref, share_user_ref) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     if ($stmt = $conn->prepare($query)) {
-      $stmt->bind_param('ssssiiiss', $userId, $oldName, $oldContent, $postTime, $likes, $dislikes, $oldReposts, $oldVideoLink, $oldShareRef);
+      $stmt->bind_param('ssssiiisii', $userId, $oldName, $oldContent, $postTime, $likes, $dislikes, $oldReposts, $oldVideoLink, $oldShareRef, $oldPostUserId);
       $stmt->execute();
       $stmt->close();
-      Header("Location: ../homepage/index.php");
-      exit();
+
+      if ($stmt = $conn->prepare("UPDATE posts SET reposts = ? WHERE id = ?;")) {
+        $stmt->bind_param("ii", $oldReposts, $postId);
+        $stmt->execute();
+        Header("Location: ../homepage/index.php");
+        exit();
+      }
     }
   }
 }

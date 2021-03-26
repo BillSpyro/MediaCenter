@@ -31,6 +31,7 @@ include_once "../includes/dbc_inc.php";
     <?php while ($row = $result->fetch_array()):  ?>
 
     <div class="posts">
+      <?php if (is_null($row['share_ref'])): ?>
         <div class="post">
             <div class="header-post">
                 <div class="image">
@@ -61,6 +62,7 @@ include_once "../includes/dbc_inc.php";
                 <div>
 
                 <div>
+                  <p>Reposts: <?php echo $row['reposts']; ?></p>
                 </div>
                 <?php
 
@@ -86,6 +88,9 @@ include_once "../includes/dbc_inc.php";
                 </form>
       </section>
         </div>
+      <?php else: ?>
+        <?php include "../includes/share_post_display.php"; ?>
+      <?php endif; ?>
 
 
     </div>
