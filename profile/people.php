@@ -166,25 +166,24 @@ header("Location: ../profile/people.php");
 
     <h2>Results</h2>
 
-    <ul>
+    
+    <div class="peoples">
     <?php while ($row = $result->fetch_array()):  ?>
-      <div class="peoples">
-        <div class="people">
-    <li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100">
-    <a href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a>
+      <div class="people">
+    <div><li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100"></div>
+    <div><a class="name-people" href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a></div>
     <?php if (isset($friendCheck[$up]) && $friendCheck[$up] == 1): ?>
     <span>Friends</span>
   <?php elseif (isset($requestCheck[$up]) && $requestCheck[$up] == $row['id']): ?>
     <span>Request Sent</span>
     <?php else: ?>
-    <a href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a>
+    <a class="send-request" href="../profile/people.php?friend_ID=<?php echo $row['id'] ?>">Send Friend Request</a>
     <?php endif ?>
     </li>
     <?php $up += 1; ?>
-    <?php endwhile ?>
-    </ul>
     </div>
-
+    <?php endwhile ?>
+   
   </div>
 
 
