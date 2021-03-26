@@ -81,6 +81,25 @@ if (isset($_GET['Action'])){
           }
           ?>
             <a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> commented with, "<?php echo $comment ?>" on your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+          <?php elseif ($row['type'] == 'New Post'): ?>
+            <?php
+            $query = "SELECT * FROM profile, posts WHERE posts.id = ? and profile.user_ID = posts.user_ID";
+            if ($stmt = $conn->prepare($query)) {
+
+              $stmt->bind_param("i", $row['post_ID']);
+
+              $stmt->execute();
+
+              $result2 = $stmt->get_result();
+
+              while ($row2 = $result2->fetch_array()) {
+                $name = $row2['first_name'] . " " . $row2['middle_name'] . " " . $row2['last_name'];
+                $postName = $row2['name'];
+                $postID = $row['post_ID'];
+              }
+            }
+            ?>
+              <a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> created a new post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
           <?php elseif ($row['type'] == 'Friend Request'): ?>
             <?php
             $query = "SELECT * FROM profile WHERE user_ID = ?";
