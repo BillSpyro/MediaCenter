@@ -47,7 +47,6 @@ include_once "../includes/create_notification_inc.php";
                 <?php endif; ?>
             </div>
             <?php $id = $row["id"];?>
-            <div>
             <hr>
                 <div class="likes-button">
                     <form action="index.php" method="post">
@@ -130,12 +129,10 @@ include_once "../includes/create_notification_inc.php";
                     <input type='submit' name="submitcomment">
                 </form>
       </section>
-        </div>
       <?php else: ?>
         <?php include "../includes/share_post_display.php"; ?>
       <?php endif; ?>
 
-    
       <div>
 
         <div>
