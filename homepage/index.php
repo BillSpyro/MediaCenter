@@ -135,7 +135,7 @@ include_once "../includes/create_notification_inc.php";
         <?php include "../includes/share_post_display.php"; ?>
       <?php endif; ?>
 
-    </div>
+    
       <div>
 
         <div>
