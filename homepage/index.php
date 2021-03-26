@@ -13,7 +13,7 @@ include_once "../includes/dbc_inc.php";
         <li><a class="home-login" href="../auth/login.php">Log In</a></li>
         <p>Don't have an account? register.</p>
         <li><a class="home-register" href="../auth/register.php">Register</a></li>
-    <?php else: 
+    <?php else:
         $user_id = $_SESSION['id'];
         ?>
     <?php include_once "../posts/create_post.php"; ?>
@@ -45,17 +45,16 @@ include_once "../includes/dbc_inc.php";
                 <?php endif; ?>
             </div>
             <?php $id = $row["id"];?>
-            <div>
             <hr>
                 <div class="likes-button">
                     <form action="index.php" method="post">
                         <input class="id" type="text" name="postId" value="<?php echo $id?>" hidden>
                         <button class="submit-button" type="submit" name="Like" ><img class="like-image" src="https://img.icons8.com/flat-round/64/000000/good-quality--v1.png"/></button>
                     </form>
-                
-                
+
+
                 </div>
-                
+
                 <div>
 <!-- check if the user like the post  -->
 
@@ -64,7 +63,7 @@ include_once "../includes/dbc_inc.php";
 
 <div>
         <?php
-            $sql_isliked = "SELECT likes  FROM likes  WHERE post_ID = '$id' and user_id=$user_id;"; 
+            $sql_isliked = "SELECT likes  FROM likes  WHERE post_ID = '$id' and user_id=$user_id;";
             $isliked_ressult= $conn->query($sql_isliked);
             if ($isliked_ressult->num_rows > 0) {
                 while($row = $isliked_ressult->fetch_assoc()) {
@@ -73,42 +72,42 @@ include_once "../includes/dbc_inc.php";
                         echo "you liked this post";
                     }else {
                         echo "you didn't like the post";
-                    }  
-                    }       
+                    }
+                    }
             }else {
                     echo "you didn't like the post";
                 }
                 ?>
-               
-                    
-        
+
+
+
 </div>
     <!-- get the total amount of comments in each pages -->
             <div>
                 <?php
-                $sql_count_comments = "SELECT COUNT(content) AS NumberOfComments FROM comments WHERE post_ID = '$id';"; 
+                $sql_count_comments = "SELECT COUNT(content) AS NumberOfComments FROM comments WHERE post_ID = '$id';";
                 $TotalComment_ressult= $conn->query($sql_count_comments);
                 if ($TotalComment_ressult->num_rows > 0) {
                     while($row = $TotalComment_ressult->fetch_assoc()) {
                         $NumberOfComments = $row['NumberOfComments'];
-                        
-                        }       
+
+                        }
                 }else {
                     echo "0 results";
                 }
                 ?>
-                
+
                 </div>
-                
+
                 <?php
 // get the total amount of likes in each pages
-                $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';"; 
+                $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';";
                 $result1 = $conn->query($sql_rate_count);
                 if ($result1->num_rows > 0) {
                     while($row = $result1->fetch_assoc()) {
                         $NumberOfLikes = $row['NumberOfLikes'];
-                         
-                        }       
+
+                        }
                 }else {
                     echo "0 results";
                 }
@@ -119,7 +118,7 @@ include_once "../includes/dbc_inc.php";
                     <div><p class="show-comments"><?php echo $NumberOfComments;?> Comments</p></div>
                     <div><p class="show-likes"><?php echo $NumberOfLikes;?> Likes</p></div>
                 </div>
-            </div> 
+            </div>
             <hr>
             <section>
                 <form class="comment-form" action="index.php" method="POST">
@@ -128,14 +127,11 @@ include_once "../includes/dbc_inc.php";
                     <input type='submit' name="submitcomment">
                 </form>
       </section>
-        </div>
       <?php else: ?>
         <?php include "../includes/share_post_display.php"; ?>
       <?php endif; ?>
-
-    </div>
       <div>
-     
+
         <div>
         <?php
         $query_comments = "SELECT profile.*, comments.*, users.* FROM users, profile, comments WHERE users.id = profile.user_ID and users.id=comments.user_ID and comments.post_ID = '$id';";
@@ -147,7 +143,7 @@ include_once "../includes/dbc_inc.php";
 <p>all comments</p>
 <?php while ($row1 = $result2->fetch_array()):  ?>
         <div class="comment">
-            <div class="header-comment">   
+            <div class="header-comment">
             <div class="image">
                     <img src="<?php echo $row1['profile_picture'] ?>" alt="" width="30" height="30">
                 </div>
@@ -170,9 +166,9 @@ include_once "../includes/dbc_inc.php";
 <?php endif ?>
 
 <!-- Insert new  comment -->
-    <?php 
+    <?php
         if(isset($_POST["submitcomment"])) {
-            
+
             $postId = $_POST['postId'];
             $comment = $_POST['comment'];
             $dateTime = date('Y-m-d H:i:s');

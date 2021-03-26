@@ -25,7 +25,6 @@ if ($shareStmt = $conn->prepare($shareQuery)):
         <?php endif; ?>
     </div>
     <?php $id = $shareRow["id"];?>
-    <div>
     <hr>
         <div>
             <form action="index.php" method="post">
@@ -33,8 +32,6 @@ if ($shareStmt = $conn->prepare($shareQuery)):
                 <input class="submit" type="submit" name="Like" value="Like">
             </form>
         </div>
-
-        <div>
 
         <div>
           <p>Reposts: <?php echo $row['reposts'] ?></p>
@@ -52,8 +49,6 @@ if ($shareStmt = $conn->prepare($shareQuery)):
             echo "0 results";
         }
         ?>
-        </div>
-    </div>
     <hr>
     <section>
         <form class="comment-form" action="../includes/create_post_comment.php" method="POST">
@@ -62,7 +57,6 @@ if ($shareStmt = $conn->prepare($shareQuery)):
             <input type='submit'>
         </form>
 </section>
-</div>
 <?php
 endwhile;
 endif;
