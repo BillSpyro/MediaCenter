@@ -24,10 +24,11 @@ include_once "../includes/dbc_inc.php";
     $result = $conn->query($query);
     ?>
     <?php while ($row = $result->fetch_array()):  ?>
-        
+
     <div class="posts">
+      <?php if (is_null($row['share_ref'])): ?>
         <div class="post">
-            <div class="header-post">   
+            <div class="header-post">
                 <div class="image">
                     <img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100">
                 </div>
@@ -39,6 +40,9 @@ include_once "../includes/dbc_inc.php";
             <div>
                 <h2><?php echo $row["name"]?></h2>
                 <p><?php echo $row["content"]?></p>
+                <?php if ($row['user_ID'] != $_SESSION['id']): ?>
+                <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
+                <?php endif; ?>
             </div>
             <?php $id = $row["id"];?>
             <div>
@@ -54,6 +58,9 @@ include_once "../includes/dbc_inc.php";
                 
                 <div>
 <!-- check if the user like the post  -->
+
+                <div>
+                  <p>Reposts: <?php echo $row['reposts']; ?></p>
 
 <div>
         <?php
@@ -94,7 +101,6 @@ include_once "../includes/dbc_inc.php";
                 </div>
                 
                 <?php
-
 // get the total amount of likes in each pages
                 $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';"; 
                 $result1 = $conn->query($sql_rate_count);
@@ -122,11 +128,14 @@ include_once "../includes/dbc_inc.php";
                     <input type='submit' name="submitcomment">
                 </form>
       </section>
+        </div>
+      <?php else: ?>
+        <?php include "../includes/share_post_display.php"; ?>
+      <?php endif; ?>
 
-
+    </div>
       <div>
-      
-        
+     
         <div>
         <?php
         $query_comments = "SELECT profile.*, comments.*, users.* FROM users, profile, comments WHERE users.id = profile.user_ID and users.id=comments.user_ID and comments.post_ID = '$id';";
@@ -151,6 +160,7 @@ include_once "../includes/dbc_inc.php";
             </div>
         </div>
     <?php endwhile ?>
+
     </div>
         </div>
     </div>
