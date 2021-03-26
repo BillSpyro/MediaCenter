@@ -14,7 +14,7 @@ body {
     height: 80px;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .navs li  {
@@ -43,7 +43,7 @@ padding-left: 20rem;
 
 .register-form .submit, .login-form .submit {
     background-color: #1877f2;
-    
+
     border-radius: 6px;
     margin-right: 10rem;
     width: 31rem;
@@ -63,7 +63,7 @@ padding-left: 20rem;
 
 .home li {
     list-style: none;
-    
+
 }
 li a.home-login {
     color: white;
@@ -177,7 +177,7 @@ justify-content: center;
 }
 .comment-form {
     padding-bottom: 1rem;
-   
+
 }
 
 .comment-form input:nth-child(2) {
@@ -191,7 +191,7 @@ justify-content: center;
 .comment-form input:nth-child(3) {
     border-radius: 5px;;
     padding: 0.5rem;
-    
+
 }
 
 /* profile page css */
@@ -244,7 +244,7 @@ justify-content: center;
 .freinds-info img {
     border-radius: 50%;
     margin-top: 2rem;
-   
+
 }
 .freinds-info li {
     list-style: none;
@@ -254,7 +254,7 @@ justify-content: center;
     padding: 0.3rem;
     color: black;
     font-weight: bold;
-    
+
 }
 .freinds-info a:first-child {
     background: none;
@@ -279,7 +279,7 @@ justify-content: center;
 
 .pic-name {
     padding-left: 20rem;
-    
+
 }
 /* post page css */
 .post-form--div {
@@ -287,7 +287,7 @@ justify-content: center;
     justify-content: center;
 }
 .post-form  {
-    
+
     background-color: white;
     width: 600px;
     border-radius: 10px;
@@ -339,7 +339,7 @@ justify-content: center;
 .freinds-info img {
     border-radius: 50%;
     margin-top: 2rem;
-   
+
 }
 .freinds-info li {
     list-style: none;
@@ -349,7 +349,7 @@ justify-content: center;
     padding: 0.3rem;
     color: black;
     font-weight: bold;
-    
+
 }
 .freinds-info a:first-child {
     background: none;
@@ -384,8 +384,8 @@ justify-content: center;
 .peoples {
     display: flex;
     flex-direction: column;
-  
-    
+
+
 }
 .peoples div {
     padding-top: 1rem;

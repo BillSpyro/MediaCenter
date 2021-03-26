@@ -2,6 +2,8 @@
 <?php
 include_once "../includes/header.php";
 include_once "../includes/dbc_inc.php";
+include_once "../includes/create_notification_inc.php";
+
 ?>
 
 <!-- welcome page, login, and register link -->
@@ -130,6 +132,7 @@ include_once "../includes/dbc_inc.php";
       <?php else: ?>
         <?php include "../includes/share_post_display.php"; ?>
       <?php endif; ?>
+
       <div>
 
         <div>
@@ -157,11 +160,11 @@ include_once "../includes/dbc_inc.php";
         </div>
     <?php endwhile ?>
 
-    </div>
         </div>
+      </div>
     </div>
+  </div>
  </div>
-</div>
 <?php endwhile ?>
 <?php endif ?>
 
@@ -181,7 +184,40 @@ include_once "../includes/dbc_inc.php";
                 }else {
                     echo "somethimg went wrong";
                 }
+
+                //Getting ID of the comment that was made
+                $query = "SELECT * FROM comments WHERE user_ID = ? and post_ID = ? and content = ? and posted_date = ?";
+                if ($stmt = $conn->prepare($query)) {
+
+                  $stmt->bind_param("iiss", $user_id, $postId, $comment, $dateTime);
+
+                  $stmt->execute();
+
+                  $result = $stmt->get_result();
+
+                  while ($row = $result->fetch_array()) {
+                    $commentID = $row['id'];
+                  }
+                }
+
+                //Getting ID of the post owner
+                $query = "SELECT * FROM posts WHERE id = ? ";
+                if ($stmt = $conn->prepare($query)) {
+
+                  $stmt->bind_param("i", $postId);
+
+                  $stmt->execute();
+
+                  $result = $stmt->get_result();
+
+                  while ($row = $result->fetch_array()) {
+                    $ownerID = $row['user_ID'];
+                  }
+                }
+
                 $conn->close();
+
+                createNotification('Comment', $commentID, $ownerID, $postId);
             }
         ?>
 
@@ -211,9 +247,50 @@ include_once "../includes/dbc_inc.php";
                 $stmt->close();
                 }
             }
+
+            //Getting ID of the post owner
+            $query = "SELECT * FROM posts WHERE id = ?";
+            if ($stmt = $conn->prepare($query)) {
+
+              $stmt->bind_param("i", $post_id);
+
+              $stmt->execute();
+
+              $result = $stmt->get_result();
+
+              while ($row = $result->fetch_array()) {
+                $ownerID = $row['user_ID'];
+              }
+            }
+
+
+            createNotification('Like', $user_id, $ownerID, $post_id);
+
             $conn->close();
     }
 ?>
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+        $(".submit").click(function() {
+        var postid = $(".id").val();
+        alert("clicke on " + postid)
+        $.ajax({
+        type: "post",
+        async: false,
+        data: {
+            "postid": postid
+        },
+        url: "index.php",
+        success: function() {
+            }
+        });
+    });
+});
+</script>
+-->
+
 </div>
 </section>
 
