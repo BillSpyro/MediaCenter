@@ -91,6 +91,10 @@ li a.home-login {
 
 
 /* home page for posts css */
+.post-image {
+  height: 100%;
+  width: 97.5%;
+}
 
 .header-post {
     display: flex;

@@ -34,7 +34,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
 
     createNotification('New Post', $userId, $postId);
 
-    if (isset($_FILES['fileToUpload'])) {
+    if ($_FILES['fileToUpload']['name'] != "") {
       include_once "../includes/upload_image.php";
 
       $query = "UPDATE posts SET video_link = ? WHERE id = ?;";
@@ -46,7 +46,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
     }
 
     mysqli_close($conn);
-    header("Location: ../profile/profile.php?ID=$userId");
   }
 }
+var_dump($_FILES);
 ?>
