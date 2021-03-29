@@ -10,11 +10,11 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
   $postContent = $_POST['postContent'];
   $dateTime = date('Y-m-d H:i:s');
 
-  $query = "INSERT INTO posts (user_ID, name, content, post_time, likes, dislikes, reposts) VALUES (?,?,?,?,0,0,0);";
-  if ($stmt = $conn->prepare($query)) {
-    $stmt->bind_param("isss", $userId, $postName, $postContent, $dateTime);
-    $stmt->execute();
 
+    $query = "INSERT INTO posts (user_ID, name, content, post_time, likes, dislikes, reposts) VALUES (?,?,?,?,0,0,0);";
+    if ($stmt = $conn->prepare($query)) {
+      $stmt->bind_param("isss", $userId, $postName, $postContent, $dateTime);
+      $stmt->execute();
     //Getting ID of the post that was made
     $query = "SELECT * FROM posts WHERE user_ID = ? and name = ? and content = ? and post_time = ?";
     if ($stmt = $conn->prepare($query)) {
@@ -31,12 +31,22 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
     }
 
     $stmt->close();
-    mysqli_close($conn);
 
     createNotification('New Post', $userId, $postId);
 
+    if (isset($_FILES['fileToUpload'])) {
+      include_once "../includes/upload_image.php";
+
+      $query = "UPDATE posts SET video_link = ? WHERE id = ?;";
+      if ($stmt = $conn->prepare($query)) {
+        $stmt->bind_param("si", $target_file, $postId);
+        $stmt->execute();
+        $stmt->close();
+      }
+    }
+
+    mysqli_close($conn);
     header("Location: ../profile/profile.php?ID=$userId");
-    // header("Location: link to user's feed goes here");
   }
 }
 ?>
