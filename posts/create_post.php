@@ -8,9 +8,10 @@ if (!$_SESSION['id']) {
 <div class="post-form--div">
   <div>
 
-  <form class="post-form" action="../includes/post_inc.php" method="post">
+  <form class="post-form" action="../includes/post_inc.php" method="post" enctype="multipart/form-data">
   <p>Create Post</p>
   <hr>
+  <input type="file" name="fileToUpload">
   <input class="title" type="text" name="postName" placeholder="title" >
   <input class="body" type="text" name="postContent" placeholder="What's on your mind?" required>
   <input class="title" type="text" name="link" placeholder="video link" >
