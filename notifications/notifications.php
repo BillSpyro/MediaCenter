@@ -104,6 +104,43 @@ if (isset($_GET['Action'])){
             }
             ?>
               <a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> created a new post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+              <!-- New Video notification -->
+            <?php elseif ($row['type'] == 'New Video'): ?>
+              <?php
+              $query = "SELECT * FROM profile, videos WHERE videos.id = ? and profile.user_ID = videos.user_ID";
+              if ($stmt = $conn->prepare($query)) {
+
+                $stmt->bind_param("i", $row['video_ID']);
+
+                $stmt->execute();
+
+                $result2 = $stmt->get_result();
+
+                while ($row2 = $result2->fetch_array()) {
+                  $name = $row2['first_name'] . " " . $row2['middle_name'] . " " . $row2['last_name'];
+                  $videoID = $row['video_ID'];
+                }
+              }
+              ?>
+                <a href="../video_post/videos.php?id=<?php echo $videoID ?>"><?php echo $name; ?> created a new video on <?php echo $row['notification_time']; ?></a>
+              <!-- Update Profile notification -->
+            <?php elseif ($row['type'] == 'Update Profile'): ?>
+              <?php
+              $query = "SELECT * FROM profile, users WHERE profile.id = ? and users.id = profile.user_ID";
+              if ($stmt = $conn->prepare($query)) {
+
+                $stmt->bind_param("i", $row['profile_ID']);
+
+                $stmt->execute();
+
+                $result2 = $stmt->get_result();
+
+                while ($row2 = $result2->fetch_array()) {
+                  $name = $row2['first_name'] . " " . $row2['middle_name'] . " " . $row2['last_name'];
+                }
+              }
+              ?>
+                <a href="../profile/profile.php?ID=<?php echo $row['profile_ID'] ?>"><?php echo $name; ?> updated their profile on <?php echo $row['notification_time']; ?></a>
               <!-- Friend Request notification -->
           <?php elseif ($row['type'] == 'Friend Request'): ?>
             <?php

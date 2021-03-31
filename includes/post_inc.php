@@ -32,7 +32,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
 
     $stmt->close();
 
-    createNotification('New Post', $userId, $postId);
+    createNotification('New Post', $userId, $videoId);
 
     if ($_FILES['fileToUpload']['name'] != "") {
       include_once "../includes/upload_image.php";

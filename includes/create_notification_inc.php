@@ -72,6 +72,36 @@ if($notificationType == 'Friend Request'){
       $stmt2->close();
     }
   }
+  //New Video Notification
+} else if ($notificationType == 'New Video'){
+    $query = "SELECT * FROM friends WHERE user_ID = ? and friends = 1";
+    if ($stmt = $conn->prepare($query)) {
+      $stmt->bind_param('i', $userID);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    } while ($row = $result->fetch_array()){
+      $query2 = "INSERT INTO notifications (user_ID, notification_time, video_ID, type) VALUES (?, ?, ?, ?)";
+      if ($stmt2 = $conn->prepare($query2)) {
+        $stmt2->bind_param('isis', $row['friend_ID'], $dateTime, $otherID, $notificationType);
+        $stmt2->execute();
+        $stmt2->close();
+      }
+    }
+  //Update Profile Notification
+} else if ($notificationType == 'Update Profile'){
+    $query = "SELECT * FROM friends WHERE user_ID = ? and friends = 1";
+    if ($stmt = $conn->prepare($query)) {
+      $stmt->bind_param('i', $userID);
+      $stmt->execute();
+      $result = $stmt->get_result();
+    } while ($row = $result->fetch_array()){
+      $query2 = "INSERT INTO notifications (profile_ID, user_ID, notification_time, type) VALUES (?, ?, ?, ?)";
+      if ($stmt2 = $conn->prepare($query2)) {
+        $stmt2->bind_param('iiss', $other, $row['friend_ID'], $dateTime, $notificationType);
+        $stmt2->execute();
+        $stmt2->close();
+      }
+    }
 //Friend Accept Notification
 } else if ($notificationType == 'Friend Accept'){
   $query = "INSERT INTO notifications (user_ID, notification_time, friend_ID, type) VALUES (?, ?, ?, ?)";
