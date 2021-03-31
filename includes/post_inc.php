@@ -8,11 +8,12 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
   $userId = $_SESSION['id'];
   $postName = $_POST['postName'];
   $postContent = $_POST['postContent'];
+  $video_link = $_POST["link"];
   $dateTime = date('Y-m-d H:i:s');
 
-  $query = "INSERT INTO posts (user_ID, name, content, post_time, likes, dislikes, reposts) VALUES (?,?,?,?,0,0,0);";
+  $query = "INSERT INTO posts (user_ID, name, content, video_link, post_time, likes, dislikes, reposts) VALUES (?,?,?,?,?,0,0,0);";
   if ($stmt = $conn->prepare($query)) {
-    $stmt->bind_param("isss", $userId, $postName, $postContent, $dateTime);
+    $stmt->bind_param("issss", $userId, $postName, $postContent, $video_link, $dateTime);
     $stmt->execute();
 
     //Getting ID of the post that was made

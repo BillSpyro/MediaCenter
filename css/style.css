@@ -118,7 +118,7 @@ justify-content: center;
 
 }
 
-.post {
+.post{
     background-color: white;
     margin-top: 2rem;
     width: 600px;
@@ -427,7 +427,22 @@ a.name-people:hover {
     width: 250px;
     box-shadow: 0 2px 4px 0 rgb(10 0 0 / 20%);
 }
+/* video page  */
 
+
+.edit-delete {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit {
+    color: cornflowerblue;
+
+}
+div.delete button  {
+    background: none;
+    border: none;
+}
 
 
 /* footer page style */

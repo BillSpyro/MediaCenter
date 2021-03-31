@@ -43,6 +43,7 @@ if ($stmt = $conn->prepare($query)) {
             <li><a href="../auth/login.php">Log In</a></li>
         <?php endif ?>
             <li><a href="../homepage/index.php">Home</a></li>
+            <li><a href="../video_post/videos.php">Videos</a></li>
         </ul>
     </nav>
 </header>
