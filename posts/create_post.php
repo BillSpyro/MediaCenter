@@ -14,6 +14,7 @@ if (!$_SESSION['id']) {
   <input type="file" name="fileToUpload">
   <input class="title" type="text" name="postName" placeholder="title" >
   <input class="body" type="text" name="postContent" placeholder="What's on your mind?" required>
+  <input class="title" type="text" name="link" placeholder="video link" >
   <input class="submit" type="submit" value="POST">
 </form>
   </div>
