@@ -47,6 +47,8 @@ CREATE TABLE `posts` (
   `dislikes` int NOT NULL,
   `reposts` int NOT NULL,
   `video_link` varchar(255),
+  `share_ref` int,
+  `share_user_ref` int,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   FOREIGN KEY (user_ID) REFERENCES users(id)
@@ -100,12 +102,15 @@ CREATE TABLE `likes` (
 
 CREATE TABLE `notifications` (
   `id` serial UNIQUE NOT NULL,
-  `post_ID` int NOT NULL,
-  `profile_ID` int NOT NULL,
-  `comment_ID` int NOT NULL,
-  `friend_ID` int NOT NULL,
+  `post_ID` int,
+  `profile_ID` int,
+  `like_ID` int,
+  `comment_ID` int,
+  `friend_ID` int,
   `user_ID` int NOT NULL,
-  `alerted` boolean NOT NULL,
+  `notification_time` datetime NOT NULL,
+  `type` varchar(45),
+  `viewed` boolean DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -122,9 +127,9 @@ VALUES (1, 1, null, 'Mr', 'Admin', 'Jr', '71791254321', '2000-07-27', 'male', nu
        (3, 3, null, 'Alebachew', null, 'Melaku', '7174929530', '1990-11-27', 'female', null, 'Ethopia', 'Facebook Programmer', 'Associates Degree', 'Single'),
        (4, 4, null, 'Jane', 'Moe', 'Doe', '717943049', '1987-09-24', 'female', null, 'TX, USA', null, null, 'Married');
 
-INSERT INTO `posts` (id, user_ID, name, content, post_time, likes, dislikes, reposts, video_link)
-VALUES (1, 2, 'My First Post', 'Hello this is my first post.', '9999-12-31 23:59:59', 0, 0, 0, null),
-       (2, 3, 'Hello everyone!', 'My name is Alebachew.', '2021-2-26 15:34:19', 0, 0, 0, null);
+INSERT INTO `posts` (id, user_ID, name, content, post_time, likes, dislikes, reposts, video_link, share_ref)
+VALUES (1, 2, 'My First Post', 'Hello this is my first post.', '9999-12-31 23:59:59', 0, 0, 0, null, null),
+       (2, 3, 'Hello everyone!', 'My name is Alebachew.', '2021-2-26 15:34:19', 0, 0, 0, null, null);
 
 INSERT INTO `comments` (user_ID, post_ID, profile_ID, comment_ID, posted_date, content)
 VALUES (1, 1, NULL, NULL, "2021-3-4 16:00:00", "Test Comment 1"),

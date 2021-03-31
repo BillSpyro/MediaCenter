@@ -2,6 +2,8 @@
 <?php
 include_once "../includes/header.php";
 include_once "../includes/dbc_inc.php";
+include_once "../includes/create_notification_inc.php";
+
 ?>
 
 <!-- welcome page, login, and register link -->
@@ -13,7 +15,7 @@ include_once "../includes/dbc_inc.php";
         <li><a class="home-login" href="../auth/login.php">Log In</a></li>
         <p>Don't have an account? register.</p>
         <li><a class="home-register" href="../auth/register.php">Register</a></li>
-    <?php else: 
+    <?php else:
         $user_id = $_SESSION['id'];
         ?>
     <?php include_once "../posts/create_post.php"; ?>
@@ -24,10 +26,11 @@ include_once "../includes/dbc_inc.php";
     $result = $conn->query($query);
     ?>
     <?php while ($row = $result->fetch_array()):  ?>
-        
+
     <div class="posts">
+      <?php if (is_null($row['share_ref'])): ?>
         <div class="post">
-            <div class="header-post">   
+            <div class="header-post">
                 <div class="image">
                     <img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100">
                 </div>
@@ -39,26 +42,35 @@ include_once "../includes/dbc_inc.php";
             <div>
                 <h2><?php echo $row["name"]?></h2>
                 <p><?php echo $row["content"]?></p>
+
                 <?php if($row['video_link']):?>
                 <iframe width="560" height="315" src="<?php echo $row['video_link'] ?>"></iframe>
                 <?php endif;?>
+
+                <?php if ($row['user_ID'] != $_SESSION['id']): ?>
+                <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
+                <?php endif; ?>
+
             </div>
             <?php $id = $row["id"];?>
-            <div>
             <hr>
                 <div class="likes-button">
                     <form action="index.php" method="post">
                         <input class="id" type="text" name="postId" value="<?php echo $id?>" hidden>
                         <button class="submit-button" type="submit" name="Like" ><img class="like-image" src="https://img.icons8.com/flat-round/64/000000/good-quality--v1.png"/></button>
                     </form>
+
                 </div>
-                
+
                 <div>
 <!-- check if the user like the post  -->
 
+                <div>
+                  <p>Reposts: <?php echo $row['reposts']; ?></p>
+
 <div>
         <?php
-            $sql_isliked = "SELECT likes  FROM likes  WHERE post_ID = '$id' and user_id=$user_id;"; 
+            $sql_isliked = "SELECT likes  FROM likes  WHERE post_ID = '$id' and user_id=$user_id;";
             $isliked_ressult= $conn->query($sql_isliked);
             if ($isliked_ressult->num_rows > 0) {
                 while($row = $isliked_ressult->fetch_assoc()) {
@@ -67,43 +79,42 @@ include_once "../includes/dbc_inc.php";
                         echo "you liked this post";
                     }else {
                         echo "you didn't like the post";
-                    }  
-                    }       
+                    }
+                    }
             }else {
                     echo "you didn't like the post";
                 }
                 ?>
-               
-                    
-        
+
+
+
 </div>
     <!-- get the total amount of comments in each pages -->
             <div>
                 <?php
-                $sql_count_comments = "SELECT COUNT(content) AS NumberOfComments FROM comments WHERE post_ID = '$id';"; 
+                $sql_count_comments = "SELECT COUNT(content) AS NumberOfComments FROM comments WHERE post_ID = '$id';";
                 $TotalComment_ressult= $conn->query($sql_count_comments);
                 if ($TotalComment_ressult->num_rows > 0) {
                     while($row = $TotalComment_ressult->fetch_assoc()) {
                         $NumberOfComments = $row['NumberOfComments'];
-                        
-                        }       
+
+                        }
                 }else {
                     echo "0 results";
                 }
                 ?>
-                
-                </div>
-                
-                <?php
 
+                </div>
+
+                <?php
 // get the total amount of likes in each pages
-                $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';"; 
+                $sql_rate_count = "SELECT COUNT(likes) AS NumberOfLikes FROM likes WHERE post_ID = '$id';";
                 $result1 = $conn->query($sql_rate_count);
                 if ($result1->num_rows > 0) {
                     while($row = $result1->fetch_assoc()) {
                         $NumberOfLikes = $row['NumberOfLikes'];
-                         
-                        }       
+
+                        }
                 }else {
                     echo "0 results";
                 }
@@ -114,7 +125,7 @@ include_once "../includes/dbc_inc.php";
                     <div><p class="show-comments"><?php echo $NumberOfComments;?> Comments</p></div>
                     <div><p class="show-likes"><?php echo $NumberOfLikes;?> Likes</p></div>
                 </div>
-            </div> 
+            </div>
             <hr>
             <section>
                 <form class="comment-form" action="index.php" method="POST">
@@ -123,11 +134,12 @@ include_once "../includes/dbc_inc.php";
                     <input type='submit' name="submitcomment">
                 </form>
       </section>
-
+      <?php else: ?>
+        <?php include "../includes/share_post_display.php"; ?>
+      <?php endif; ?>
 
       <div>
-      
-        
+
         <div>
         <?php
         $query_comments = "SELECT profile.*, comments.*, users.* FROM users, profile, comments WHERE users.id = profile.user_ID and users.id=comments.user_ID and comments.post_ID = '$id';";
@@ -139,7 +151,7 @@ include_once "../includes/dbc_inc.php";
 <p>all comments</p>
 <?php while ($row1 = $result2->fetch_array()):  ?>
         <div class="comment">
-            <div class="header-comment">   
+            <div class="header-comment">
             <div class="image">
                     <img src="<?php echo $row1['profile_picture'] ?>" alt="" width="30" height="30">
                 </div>
@@ -152,18 +164,19 @@ include_once "../includes/dbc_inc.php";
             </div>
         </div>
     <?php endwhile ?>
-    </div>
+
         </div>
+      </div>
     </div>
+  </div>
  </div>
-</div>
 <?php endwhile ?>
 <?php endif ?>
 
 <!-- Insert new  comment -->
-    <?php 
+    <?php
         if(isset($_POST["submitcomment"])) {
-            
+
             $postId = $_POST['postId'];
             $comment = $_POST['comment'];
             $dateTime = date('Y-m-d H:i:s');
@@ -176,7 +189,40 @@ include_once "../includes/dbc_inc.php";
                 }else {
                     echo "somethimg went wrong";
                 }
+
+                //Getting ID of the comment that was made
+                $query = "SELECT * FROM comments WHERE user_ID = ? and post_ID = ? and content = ? and posted_date = ?";
+                if ($stmt = $conn->prepare($query)) {
+
+                  $stmt->bind_param("iiss", $user_id, $postId, $comment, $dateTime);
+
+                  $stmt->execute();
+
+                  $result = $stmt->get_result();
+
+                  while ($row = $result->fetch_array()) {
+                    $commentID = $row['id'];
+                  }
+                }
+
+                //Getting ID of the post owner
+                $query = "SELECT * FROM posts WHERE id = ? ";
+                if ($stmt = $conn->prepare($query)) {
+
+                  $stmt->bind_param("i", $postId);
+
+                  $stmt->execute();
+
+                  $result = $stmt->get_result();
+
+                  while ($row = $result->fetch_array()) {
+                    $ownerID = $row['user_ID'];
+                  }
+                }
+
                 $conn->close();
+
+                createNotification('Comment', $commentID, $ownerID, $postId);
             }
         ?>
 
@@ -207,9 +253,50 @@ include_once "../includes/dbc_inc.php";
                 $stmt->close();
                 }
             }
+
+            //Getting ID of the post owner
+            $query = "SELECT * FROM posts WHERE id = ?";
+            if ($stmt = $conn->prepare($query)) {
+
+              $stmt->bind_param("i", $post_id);
+
+              $stmt->execute();
+
+              $result = $stmt->get_result();
+
+              while ($row = $result->fetch_array()) {
+                $ownerID = $row['user_ID'];
+              }
+            }
+
+
+            createNotification('Like', $user_id, $ownerID, $post_id);
+
             $conn->close();
     }
 ?>
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+        $(".submit").click(function() {
+        var postid = $(".id").val();
+        alert("clicke on " + postid)
+        $.ajax({
+        type: "post",
+        async: false,
+        data: {
+            "postid": postid
+        },
+        url: "index.php",
+        success: function() {
+            }
+        });
+    });
+});
+</script>
+-->
+
 </div>
 </section>
 
