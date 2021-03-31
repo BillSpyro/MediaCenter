@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `profile`;
 DROP TABLE IF EXISTS `posts`;
+DROP TABLE IF EXISTS `videos`;
 DROP TABLE IF EXISTS `friends`;
 DROP TABLE IF EXISTS `comments`;
 DROP TABLE IF EXISTS `likes`;
@@ -53,6 +54,18 @@ CREATE TABLE `posts` (
   FOREIGN KEY (user_ID) REFERENCES users(id)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE `videos` (
+  `id` serial UNIQUE NOT NULL,
+  `user_ID` int NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `links` varchar(255) NOT NULL,
+  `post_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  FOREIGN KEY (user_ID) REFERENCES users(id)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
 CREATE TABLE `friends` (
   `id` serial UNIQUE NOT NULL,
   `user_ID` int NOT NULL,
@@ -66,6 +79,7 @@ CREATE TABLE `comments` (
   `id` serial UNIQUE NOT NULL,
   `user_ID` int NOT NULL,
   `post_ID` int,
+  `video_ID` int,
   `profile_ID` int,
   `comment_ID` int,
   `posted_date` datetime NOT NULL,
@@ -77,9 +91,11 @@ CREATE TABLE `comments` (
 CREATE TABLE `likes` (
   `id` serial UNIQUE NOT NULL,
   `user_ID` int NOT NULL,
-  `post_ID` int NOT NULL,
+  `post_ID` int,
+  `video_ID` int,
   `profile_ID` int NOT NULL,
   `likes` int(11) DEFAULT 0,
+  `video_likes` int(11) DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
