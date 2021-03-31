@@ -21,7 +21,7 @@
         <h4>Social Media</h4>
       </li>
       <hr>
-      <li class="fb"><a href="https://www.facebook.com/alebachew.tegegne.9">FaceBook</a></li>
+      <li class="fb"><a href="https://www.facebook.com/alebachew.tegegne.9" target="_blank">FaceBook</a></li>
       <li class="youtube"><a href="https://www.youtube.com/channel/UCnDUTZDgnGpaQ4lZrC3Baig/">YouTube</a></li>
       <li class="youtube"><a href="https://twitter.com/AlebachewMelak1">Twitter</a></li>
 
