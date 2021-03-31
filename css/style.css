@@ -136,7 +136,6 @@ justify-content: center;
 
 .header-comment  img {
     margin-top: 1rem;
-    border: 2px royalblue solid ;
     border-radius: 50%;
 }
 
@@ -432,13 +431,10 @@ a.name-people:hover {
 
 .edit-delete {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
 }
 
-.edit {
-    color: cornflowerblue;
 
-}
 div.delete button  {
     background: none;
     border: none;
