@@ -34,7 +34,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
     $stmt->close();
     mysqli_close($conn);
 
-    createNotification('New Post', $userId, $postId);
+    createNotification('New Post', $userId, $videoId);
 
     header("Location: ../profile/profile.php?ID=$userId");
     // header("Location: link to user's feed goes here");

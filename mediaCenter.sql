@@ -103,6 +103,7 @@ CREATE TABLE `likes` (
 CREATE TABLE `notifications` (
   `id` serial UNIQUE NOT NULL,
   `post_ID` int,
+  `video_ID` int,
   `profile_ID` int,
   `like_ID` int,
   `comment_ID` int,
