@@ -39,6 +39,9 @@ include_once "../includes/dbc_inc.php";
             <div>
                 <h2><?php echo $row["name"]?></h2>
                 <p><?php echo $row["content"]?></p>
+                <?php if($row['video_link']):?>
+                <iframe width="560" height="315" src="<?php echo $row['video_link'] ?>"></iframe>
+                <?php endif;?>
             </div>
             <?php $id = $row["id"];?>
             <div>
@@ -48,8 +51,6 @@ include_once "../includes/dbc_inc.php";
                         <input class="id" type="text" name="postId" value="<?php echo $id?>" hidden>
                         <button class="submit-button" type="submit" name="Like" ><img class="like-image" src="https://img.icons8.com/flat-round/64/000000/good-quality--v1.png"/></button>
                     </form>
-                
-                
                 </div>
                 
                 <div>
@@ -191,6 +192,7 @@ include_once "../includes/dbc_inc.php";
                 $stmt->bind_param('ii', $post_id, $user_id);
                 $stmt->execute();
                 $unliked = "you didn't like the post yet";
+                echo  $unliked;
                 $stmt->close();
                 exit();
   }
