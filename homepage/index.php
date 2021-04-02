@@ -43,10 +43,6 @@ include_once "../includes/create_notification_inc.php";
                 <h2><?php echo $row["name"]?></h2>
                 <p><?php echo $row["content"]?></p>
 
-                <?php if($row['video_link']):?>
-                <iframe width="560" height="315" src="<?php echo $row['video_link'] ?>"></iframe>
-                <?php endif;?>
-
                 <?php if ($row['user_ID'] != $_SESSION['id']): ?>
                 <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
                 <?php endif; ?>
@@ -55,7 +51,7 @@ include_once "../includes/create_notification_inc.php";
               <?php else: ?>
                 <img class="post-image" src=<?php echo $row['video_link']; ?>>
               <?php endif; ?>
-              
+
             </div>
             <?php $id = $row["id"];?>
             <hr>

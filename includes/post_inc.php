@@ -10,7 +10,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
   $postContent = $_POST['postContent'];
   $video_link = $_POST["link"];
   $dateTime = date('Y-m-d H:i:s');
-  
+
     $query = "INSERT INTO posts (user_ID, name, content, post_time, likes, dislikes, reposts) VALUES (?,?,?,?,0,0,0);";
     if ($stmt = $conn->prepare($query)) {
       $stmt->bind_param("isss", $userId, $postName, $postContent, $dateTime);
@@ -46,7 +46,7 @@ if (isset($_POST['postName']) && isset($_POST['postContent'])) {
     }
 
     mysqli_close($conn);
+    header("Location: ../homepage/index.php");
   }
 }
-var_dump($_FILES);
 ?>
