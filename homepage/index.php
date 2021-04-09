@@ -11,6 +11,7 @@ include_once "../posts/post_like_inc.php";
 <section class="home">
     <h1>Hi Welcome to our site!</h1>
     <?php if (!isset($_SESSION['id'])):?>
+            
     <div class="home-log">
         <p>Have an account? Log in.</p>
         <li><a class="home-login" href="../auth/login.php">Log In</a></li>
@@ -27,39 +28,36 @@ include_once "../posts/post_like_inc.php";
         $result = $conn->query($query);
         ?>
 
-        <?php while ($row = $result->fetch_array()):  ?>
-        <div class="posts">
-        <?php if (is_null($row['share_ref'])): ?>
-            <div class="post">
-                <div class="header-post">
-                    <div class="image">
-                        <img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100">
-                    </div>
-                    <div class="name-time">
-                        <p><?php echo $row["first_name"] . " " . $row["last_name"]?></p>
-                        <span> posted on <?php echo $row["post_time"]?></span>
-                    </div>
-                </div>
+<?php while ($row = $result->fetch_array()):  ?>
 
-                <div>
-                    <h2><?php echo $row["name"]?></h2>
-                    <p><?php echo $row["content"]?></p>
-                    <?php if($row['video_link']):?>
-                    <iframe width="560" height="315" src="<?php echo $row['video_link'] ?>"></iframe>
-                    <?php endif;?>
+<div class="posts">
+  <?php if (is_null($row['share_ref'])): ?>
+    <div class="post">
+        <div class="header-post">
+            <div class="image">
+                <img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100">
+            </div>
+            <div class="name-time">
+                <p><?php echo $row["first_name"] . " " . $row["last_name"]?></p>
+                 <span> posted on <?php echo $row["post_time"]?></span>
+            </div>
+        </div>
+        <div>
+            <h2><?php echo $row["name"]?></h2>
+            <p><?php echo $row["content"]?></p>
 
-                    <?php if ($row['user_ID'] != $_SESSION['id']): ?>
-                    <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
-                    <?php endif; ?>
+            <?php if ($row['user_ID'] != $_SESSION['id']): ?>
+            <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
+            <?php endif; ?>
 
-                    <?php if (is_null($row['video_link'])): ?>
-                <?php else: ?>
-                    <img class="post-image" src=<?php echo $row['video_link']; ?>>
-                <?php endif; ?>
-                
-                </div>
-                <?php $id = $row["id"];?>
-                <hr>
+            <?php if (is_null($row['video_link'])): ?>
+          <?php else: ?>
+            <img class="post-image" src=<?php echo $row['video_link']; ?>>
+          <?php endif; ?>
+
+        </div>
+        <?php $id = $row["id"];?>
+        <hr>
                 <!-- basic html form to like the post -->
                 <div class="likes-button">
                     <form action="../posts/post_like_inc.php" method="post">
