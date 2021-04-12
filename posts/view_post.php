@@ -6,17 +6,23 @@ if (isset($_GET['id']) && isset($_SESSION['id'])) {
   $postId = $_GET['id'];
   $userId = $_SESSION['id'];
 
-  $query = "SELECT user_ID, name, content, post_time, likes, dislikes, reposts FROM posts WHERE id = ?;";
+  $query = "SELECT first_name, last_name, posts.user_ID, name, content, post_time, likes, dislikes, reposts FROM posts JOIN profile ON posts.user_ID = profile.user_ID WHERE posts.id = ?;";
   if ($stmt = $conn->prepare($query)) {
     $stmt->bind_param("i", $postId);
     $stmt->execute();
-    $stmt->bind_result($postCreator, $postName, $postContent, $postTime, $likes, $dislikes, $reposts);
-
-    while ($stmt->fetch()) {
+    $result = $stmt->get_result();
+    
+    while ($row = $result->fetch_array()) {
       echo "<section>";
-      if ($userId == $postCreator) {
+      // Checks if the current user is the owner, lets them edit or delete if so.
+      if ($userId == $row['user_ID']) {
         printf('<a href="../posts/edit_post.php?postid=%s">Edit Post</a>', $postId);
         printf('<a href="../includes/delete_post.php?postId=%s">Delete Post</a>', $postId);
+        printf("<p>You posted..</p>");
+      } else {
+        printf(<<<EOT
+        <p>%s %s posted...</p>
+        EOT, $row['first_name'], $row['last_name']);
       }
       printf(<<<EOT
         <h1>%s</h1>
@@ -24,7 +30,7 @@ if (isset($_GET['id']) && isset($_SESSION['id'])) {
         <p>%s</p>
         <p>Likes: %s Reposts: %s</p>
       </section>
-      EOT, $postName, $postTime, $postContent, $likes, $reposts);
+      EOT, $row['name'], $row['post_time'], $row['content'], $row['likes'], $row['reposts']);
     }
     $stmt->close();
 
