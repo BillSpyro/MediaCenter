@@ -5,7 +5,9 @@ include_once "../includes/header.php";
 include_once '../includes/notification_inc.php';
 $yourID = $_SESSION['id'];
 
+//Handle marking or deleting notificiations
 if (isset($_GET['Action'])){
+  //Mark notification as viewed
   if ($_GET['Action'] == "Mark"){
     $query = "UPDATE notifications SET viewed = 1 WHERE id = ?";
     if ($stmt = $conn->prepare($query)) {
@@ -14,6 +16,7 @@ if (isset($_GET['Action'])){
       $stmt->close();
     }
     header("Location: ../notifications/notifications.php?ID=$yourID");
+    //Delete notification
   } else if ($_GET['Action'] == "Delete"){
     $query = "DELETE FROM notifications WHERE id = ?";
     if ($stmt = $conn->prepare($query)) {
