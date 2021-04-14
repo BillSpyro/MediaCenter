@@ -138,9 +138,9 @@ include_once "../posts/post_like_inc.php";
                     <?php include "../includes/share_post_display.php"; ?>
                 <?php endif; ?>
                 <div>
-                    <div>
+                <div>
                         <?php
-                        $query_comments = "SELECT profile.*, comments.*, users.* FROM users, profile, comments WHERE users.id = profile.user_ID and users.id=comments.user_ID and comments.post_ID = '$id';";
+                        $query_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID  and comments.post_ID = '$id' and comments.comment_ID is null;";
                         $result2 = $conn->query($query_comments);
                         ?>
 
@@ -148,6 +148,10 @@ include_once "../posts/post_like_inc.php";
                         <div class="comments">
                             <p>all comments</p>
                             <?php while ($row1 = $result2->fetch_array()):  ?>
+                                <?php $post_id = $row1['post_ID'];
+                                      $comment_ID = $row1["id"];
+                                
+                                ?>
                             <div class="comment">
                                 <div class="header-comment">
                                     <div class="image">
@@ -160,6 +164,40 @@ include_once "../posts/post_like_inc.php";
                                     <div class="comment-one">
                                         <p class="single-comment"><?php echo $row1["content"]?></p>
                                     </div>
+                                    <!-- get nusted comment   -->
+                                    <div>
+                                    <?php
+                                    $query_nusted_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.post_ID = '$post_id' and comments.comment_ID = '$comment_ID';";
+                                    $result3 = $conn->query($query_nusted_comments);
+                                    ?>
+                                    <div class="nusted_comments">
+                                    <?php while ($row3 = $result3->fetch_array()):  ?>
+                                    <div class="nusted_comment">
+                                        <div class="header-comment">   
+                                            <div class="image">
+                                            <img src="<?php echo $row3['profile_picture'] ?>" alt="" width="30" height="30">
+                                            </div>
+                                            <div class="name-time">
+                                            <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replyed on <?php echo $row3["posted_date"]?></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="comment-one">
+                                        <p class="single-comment"><?php echo $row3["content"]?></p>
+                                    </div>
+                                    </div>
+                                    <?php endwhile ?>
+                                    </div>
+                                    </div>
+                                    
+                                    <!-- video comments comment  -->
+                                <div>
+                                <form class="nusted_comment-form" action="../includes/post_nested_comment_inc.php" method="POST">
+                                    <input type="text" name="postId" value="<?php echo $post_id;?>" hidden>
+                                    <input type="text" name="post_comment_ID" value="<?php echo $comment_ID;?>" hidden>
+                                    <input type='text' name='comment' placeholder="reply comment ... " required>
+                                    <input type='submit' name="submitcomment">
+                                </form>
+                                </div>
                             </div>
                             <?php endwhile ?>
                         </div>
