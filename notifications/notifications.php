@@ -65,7 +65,7 @@ if (isset($_GET['Action'])){
           }
         }
         ?>
-          <a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> liked your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+          <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> liked your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
           <!-- Comment notification -->
         <?php elseif ($row['type'] == 'Comment'): ?>
           <?php
@@ -86,7 +86,7 @@ if (isset($_GET['Action'])){
             }
           }
           ?>
-            <a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> commented with, "<?php echo $comment ?>" on your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+            <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> commented with, "<?php echo $comment ?>" on your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
             <!-- New Post notification -->
           <?php elseif ($row['type'] == 'New Post'): ?>
             <?php
@@ -106,7 +106,7 @@ if (isset($_GET['Action'])){
               }
             }
             ?>
-              <a href="../posts/view_post.php?id=<?php echo $postID ?>"><?php echo $name; ?> created a new post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+              <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> created a new post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
               <!-- New Video notification -->
             <?php elseif ($row['type'] == 'New Video'): ?>
               <?php
@@ -125,7 +125,7 @@ if (isset($_GET['Action'])){
                 }
               }
               ?>
-                <a href="../video_post/videos.php?id=<?php echo $videoID ?>"><?php echo $name; ?> created a new video on <?php echo $row['notification_time']; ?></a>
+                <a href="../video_post/videos.php#<?php echo $videoID ?>"><?php echo $name; ?> created a new video on <?php echo $row['notification_time']; ?></a>
               <!-- Update Profile notification -->
             <?php elseif ($row['type'] == 'Update Profile'): ?>
               <?php
