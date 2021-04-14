@@ -125,7 +125,7 @@ justify-content: center;
 .post{
     background-color: white;
     margin-top: 2rem;
-    width: 600px;
+    width: 700px;
     padding-left: 1rem;
     box-shadow: 2px 2px 4px 2px rgb(10 0 0 / 20%);
     border-radius: 10px;
@@ -152,7 +152,6 @@ justify-content: center;
 }
 .comment {
     background-color: #F0F8FF;
-    width: 400px;
     border-radius: 20px;
     padding-left: 1rem;
 }
@@ -183,18 +182,25 @@ justify-content: center;
 
 }
 
-.comment-form input:nth-child(2) {
+.comment-form input:nth-child(2),  .nusted_comment-form input:nth-child(3){
     border: solid 1px white;
     border-radius: 1rem;
     padding: 0.5rem;
-    width: 400px;
+    width: 300px;
     background-color:#F5F5F5;
 }
 
-.comment-form input:nth-child(3) {
-    border-radius: 5px;;
-    padding: 0.5rem;
+.comment-form input:nth-child(3), .nusted_comment-form input:nth-child(4) {
+    
+    padding: 0.2rem;
 
+}
+
+.nusted_comment {
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 4rem;
+    padding-left: 1rem;
 }
 
 /* profile page css */
@@ -292,7 +298,7 @@ justify-content: center;
 .post-form  {
 
     background-color: white;
-    width: 600px;
+    width: 700px;
     border-radius: 10px;
     padding: 1rem 1rem 1rem 1rem;
     box-shadow: 2px 2px 4px 2px rgb(10 0 0 / 20%);
