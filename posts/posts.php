@@ -17,7 +17,7 @@ if ($_SESSION['id']) {
       $postId = $row['id'];
       printf(<<<EOT
       <section class="post">
-          <h1><a href="../posts/view_post.php?id=%s">%s</a></h1>
+          <h1><a href="../homepage/index.php#%s">%s</a></h1>
           <p>Posted: %s</p>
           <p>You said..</p>
           <p>%s</p>

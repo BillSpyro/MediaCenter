@@ -49,7 +49,7 @@ if (isset($_SESSION['id']) && isset($_POST['comment'])) {
 
     createNotification('Comment', $commentID, $ownerID, $postId);
 
-    header("Location: ../posts/view_post.php?id=$postId");
+    header("Location: ../homepage/index.php#$postId");
     exit();
   }
 }

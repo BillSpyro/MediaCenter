@@ -12,7 +12,7 @@ if ($_POST['newContent'] && $_POST['commentId']) {
     $stmt->execute();
     $stmt->close();
 
-    header("Location: ../posts/view_post.php?id=$postId");
+    header("Location: ../homepage/index.php#$postId");
     exit();
   }
 }
