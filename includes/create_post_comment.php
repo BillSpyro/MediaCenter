@@ -1,6 +1,7 @@
 <?php
 include_once "../includes/dbc_inc.php";
 include_once "create_notification_inc.php";
+session_start();
 
 // if they're logged in and have posted a comment
 if (isset($_SESSION['id']) && isset($_POST['comment'])) {
@@ -48,6 +49,7 @@ if (isset($_SESSION['id']) && isset($_POST['comment'])) {
 
     createNotification('Comment', $commentID, $ownerID, $postId);
 
+    header("Location: ../homepage/index.php#$postId");
     exit();
   }
 }
