@@ -12,5 +12,5 @@ if (isset($_POST['postId']) && isset($_POST['postName']) && isset($_POST['postCo
   }
 }
 mysqli_close($conn);
-header("Location: ../posts/view_post.php?id=$postId");
+header("Location: ../homepage/index.php#$postId");
 ?>

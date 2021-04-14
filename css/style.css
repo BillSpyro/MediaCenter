@@ -134,7 +134,6 @@ justify-content: center;
 /* home page for comments  */
 .header-comment {
     display: flex;
-    margin-top: 2rem;
     margin-left: auto;
 }
 
@@ -481,4 +480,22 @@ footer a:hover{
 
 .Copyright {
     text-align: center;
+}
+
+.btn {
+    border: solid 1px black;
+    box-shadow: 1px 1px black;
+    padding: 6px;
+    border-radius: 5px;
+    height: 1rem;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    margin-left: 1rem;
+}
+
+.comment-btn {
+    padding: 6px;
+    text-decoration: none;
+    color: black;
 }

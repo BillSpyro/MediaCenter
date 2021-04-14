@@ -1,9 +1,22 @@
 <?php
 include_once "../includes/header.php";
-if (isset($_GET['commentId']) && isset($_GET['oldContent'])) {
+include_once "../includes/dbc_inc.php";
+if (isset($_GET['commentId'])) {
   $commentId = $_GET['commentId'];
-  $oldContent = $_GET['oldContent'];
-  $postId = $_GET['postId'];
+  $oldContent;
+  $postId;
+  
+  $query = "SELECT * FROM comments WHERE id = ?;";
+  if ($stmt = $conn->prepare($query)) {
+    $stmt->bind_param('i', $commentId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_array()) {
+      $oldContent = $row['content'];
+      $postId = $row['post_ID'];
+    }
+    $stmt->close();
+  }
 }
 ?>
 

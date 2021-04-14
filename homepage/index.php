@@ -41,9 +41,15 @@ include_once "../posts/post_like_inc.php";
                 <p><?php echo $row["first_name"] . " " . $row["last_name"]?></p>
                  <span> posted on <?php echo $row["post_time"]?></span>
             </div>
+            <?php // delete and edit post button if that user owns the post
+            if ($row['user_ID'] == $_SESSION['id']) {
+                printf('<a class="btn" href="../posts/edit_post.php?postid=%s">Edit Post</a>', $row['id']);
+                printf('<a class="btn" href="../includes/delete_post.php?postId=%s">Delete Post</a>', $row['id']);
+        }
+    ?>
         </div>
         <div>
-            <h2><?php echo $row["name"]?></h2>
+            <h2 id=<?php echo $row['id'];?>><?php echo $row["name"]?></h2>
             <p><?php echo $row["content"]?></p>
 
             <?php if ($row['user_ID'] != $_SESSION['id']): ?>
@@ -127,8 +133,8 @@ include_once "../posts/post_like_inc.php";
                 <hr>
                 <!-- basic html form to  -->
                 <section>
-
-                    <form class="comment-form" action="index.php" method="POST">
+                        <!-- Insert new  comment -->
+                    <form class="comment-form" action="../includes/create_post_comment.php" method="POST">
                         <input type="text" name="postId" value="<?php echo $id;?>" hidden>
                         <input type='text' name='comment' placeholder="type comment" required>
                         <input type='submit' name="submitcomment">
@@ -144,11 +150,19 @@ include_once "../posts/post_like_inc.php";
                         $result2 = $conn->query($query_comments);
                         ?>
 
-        <!-- get the comments -->
+                <!-- get the comments -->
                         <div class="comments">
                             <p>all comments</p>
                             <?php while ($row1 = $result2->fetch_array()):  ?>
                             <div class="comment">
+                            <?php 
+                                    if ($row1['id'] == $_SESSION['id']) {
+                                        printf(<<<EOT
+                                        <a class="comment-btn" href="../posts/edit_comment.php?commentId=%s">Edit Comment</a>
+                                        <a class="comment-btn" href="../includes/delete_comment.php?commentId=%s&postId=%s">Delete Comment</a>
+                                        EOT, $row1[14], $row1[14], $row1['post_ID']);
+                                    }
+                            ?>
                                 <div class="header-comment">
                                     <div class="image">
                                         <img src="<?php echo $row1['profile_picture'] ?>" alt="" width="30" height="30">
@@ -169,58 +183,6 @@ include_once "../posts/post_like_inc.php";
         </div>
         <?php endwhile ?>
         <?php endif ?>
-
-    <!-- Insert new  comment -->
-        <?php
-            if(isset($_POST["submitcomment"])) {
-                $postId = $_POST['postId'];
-                $comment = $_POST['comment'];
-                $dateTime = date('Y-m-d H:i:s');
-                $query = "INSERT INTO comments (user_ID, post_ID, posted_date, content) VALUES (?, ?, ?, ?);";
-                if ($stmt = $conn->prepare($query)) {
-                    $stmt->bind_param('iiss', $user_id, $postId, $dateTime, $comment);
-                    $stmt->execute();
-                    echo "success comment";
-                    $stmt->close();
-                    }else {
-                        echo "somethimg went wrong";
-                    }
-
-                    //Getting ID of the comment that was made
-                    $query = "SELECT * FROM comments WHERE user_ID = ? and post_ID = ? and content = ? and posted_date = ?";
-                    if ($stmt = $conn->prepare($query)) {
-
-                    $stmt->bind_param("iiss", $user_id, $postId, $comment, $dateTime);
-
-                    $stmt->execute();
-
-                    $result = $stmt->get_result();
-
-                    while ($row = $result->fetch_array()) {
-                        $commentID = $row['id'];
-                    }
-                    }
-
-                    //Getting ID of the post owner
-                    $query = "SELECT * FROM posts WHERE id = ? ";
-                    if ($stmt = $conn->prepare($query)) {
-
-                    $stmt->bind_param("i", $postId);
-
-                    $stmt->execute();
-
-                    $result = $stmt->get_result();
-
-                    while ($row = $result->fetch_array()) {
-                        $ownerID = $row['user_ID'];
-                    }
-                    }
-
-                    $conn->close();
-
-                    createNotification('Comment', $commentID, $ownerID, $postId);
-                }
-            ?>
     </div>
 </section>
 <!-- include footer page -->
