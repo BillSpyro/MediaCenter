@@ -171,56 +171,7 @@ include_once "../posts/post_like_inc.php";
         <?php endif ?>
 
     <!-- Insert new  comment -->
-        <?php
-            if(isset($_POST["submitcomment"])) {
-                $postId = $_POST['postId'];
-                $comment = $_POST['comment'];
-                $dateTime = date('Y-m-d H:i:s');
-                $query = "INSERT INTO comments (user_ID, post_ID, posted_date, content) VALUES (?, ?, ?, ?);";
-                if ($stmt = $conn->prepare($query)) {
-                    $stmt->bind_param('iiss', $user_id, $postId, $dateTime, $comment);
-                    $stmt->execute();
-                    echo "success comment";
-                    $stmt->close();
-                    }else {
-                        echo "somethimg went wrong";
-                    }
-
-                    //Getting ID of the comment that was made
-                    $query = "SELECT * FROM comments WHERE user_ID = ? and post_ID = ? and content = ? and posted_date = ?";
-                    if ($stmt = $conn->prepare($query)) {
-
-                    $stmt->bind_param("iiss", $user_id, $postId, $comment, $dateTime);
-
-                    $stmt->execute();
-
-                    $result = $stmt->get_result();
-
-                    while ($row = $result->fetch_array()) {
-                        $commentID = $row['id'];
-                    }
-                    }
-
-                    //Getting ID of the post owner
-                    $query = "SELECT * FROM posts WHERE id = ? ";
-                    if ($stmt = $conn->prepare($query)) {
-
-                    $stmt->bind_param("i", $postId);
-
-                    $stmt->execute();
-
-                    $result = $stmt->get_result();
-
-                    while ($row = $result->fetch_array()) {
-                        $ownerID = $row['user_ID'];
-                    }
-                    }
-
-                    $conn->close();
-
-                    createNotification('Comment', $commentID, $ownerID, $postId);
-                }
-            ?>
+        <?php include "../includes/create_post_comment.php";?>
     </div>
 </section>
 <!-- include footer page -->
