@@ -120,12 +120,12 @@ $result = $conn->query($query);
 
     <!-- get video's comment with profile pics and name-->
     <?php
-    $query_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.video_ID = '$video_id';";
+    $query_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.video_ID = '$video_id' and comments.comment_ID is null;";
     $result2 = $conn->query($query_comments);
     ?>
-    <div class="comments">
     <p>all comments</p>
     <?php while ($row1 = $result2->fetch_array()):  ?>
+            <?php $comment_ID = $row1["id"];?>
             <div class="comment">
                 <div class="header-comment">   
                 <div class="image">
@@ -153,12 +153,46 @@ $result = $conn->query($query);
                   <?php endif ?>
                   
                 </div>
-                    <div class="comment-one">
+                  <div class="comment-one">
                     <p class="single-comment"><?php echo $row1["content"]?></p>
+                  </div>
+                  <div>
+                <!-- get nusted comment   -->
+                <?php
+                $query_nusted_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.video_ID = '$video_id' and comments.comment_ID = '$comment_ID';";
+                $result3 = $conn->query($query_nusted_comments);
+                ?>
+                <div class="nusted_comments">
+                <?php while ($row3 = $result3->fetch_array()):  ?>
+                  <div class="nusted_comment">
+                    <div class="header-comment">   
+                        <div class="image">
+                          <img src="<?php echo $row3['profile_picture'] ?>" alt="" width="30" height="30">
+                        </div>
+                        <div class="name-time">
+                          <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replyed on <?php echo $row3["posted_date"]?></span></p>
+                        </div>
+                    </div>
+                    <div class="comment-one">
+                    <p class="single-comment"><?php echo $row3["content"]?></p>
+                  </div>
+                  </div>
+                <?php endwhile ?>
+                  </div>
+                  </div>
+                  <!-- video comments comment  -->
+                  <div>
+                  <form class="nusted_comment-form" action="video_nusted_comment/video_comment_comment_inc.php" method="POST">
+                    <input type="text" name="videoId" value="<?php echo $row1["video_ID"];?>" hidden>
+                    <input type="text" name="video_comment_ID" value="<?php echo $row1["id"];?>" hidden>
+                    <input type='text' name='comment' placeholder="reply comment ... " required>
+                    <input type='submit' name="submitcomment">
+                  </form>
                 </div>
-            </div>
+          </div>
       <?php endwhile ?>
       </div>
+      
   </div>
 </div>
 <?php endwhile?>
