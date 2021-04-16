@@ -189,7 +189,7 @@ include_once "../posts/post_like_inc.php";
                                                             <img src="<?php echo $row3['profile_picture'] ?>" alt="" width="30" height="30">
                                                         </div>
                                                         <div class="name-time">
-                                                            <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replyed on <?php echo $row3["posted_date"]?></span></p>
+                                                            <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replied on <?php echo $row3["posted_date"]?></span></p>
                                                         </div>
                                                     </div>
                                                     <div class="comment-one">
