@@ -1,4 +1,3 @@
-
 <?php
 
 include_once '../includes/header.php';
@@ -10,6 +9,7 @@ include_once '../includes/header.php';
   <h1>Login</h1>
 
   <?php
+  // display error here 
   if (isset($_GET['error'])):
     $error = $_GET['error'];
   ?>

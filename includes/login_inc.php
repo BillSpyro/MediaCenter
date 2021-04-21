@@ -16,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $stmt->execute();
 
     $result = $stmt->get_result();
-
+    // check hashed password
     while ($row = $result->fetch_row()) {
 
       if (password_verify($password, $row[2])) {
@@ -26,6 +26,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         exit();
       }
     }
+    // if something isnt right, give them an error
     $error = "Some of your information is not correct.";
     header("Location: ../auth/login.php?error=$error");
     exit();
