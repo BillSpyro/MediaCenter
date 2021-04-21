@@ -4,7 +4,9 @@ include_once "../includes/header.php";
 include_once "../includes/dbc_inc.php";
 include_once "../includes/create_notification_inc.php";
 
-$user_id = $_SESSION["id"];
+  if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION["id"];
+  }
     if(isset($_POST["Like"])) {
         $post_id = $_POST["postId"];
         $sql_rate = "SELECT likes.likes FROM users, likes, posts WHERE likes.post_ID = posts.id and likes.user_ID  = users.id and users.id = '$user_id' and posts.id = '$post_id';";

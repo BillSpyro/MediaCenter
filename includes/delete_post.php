@@ -18,7 +18,7 @@ if (isset($_GET['postId'])) {
       $stmt->execute();
       $stmt->close();
 
-      header("Location: ../profile/profile.php?ID=$userId");
+      header("Location: ../homepage/index.php");
       exit();
     }
   }

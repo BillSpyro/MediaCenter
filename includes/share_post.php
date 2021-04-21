@@ -18,11 +18,14 @@ if (isset($_GET['postId'])) {
   $oldPostUserId;
 
   $query = "SELECT * FROM posts WHERE id = ?";
+  // get all the post info for sharing 
   if ($stmt = $conn->prepare($query)) {
     $stmt->bind_param('i', $postId);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    // populate those empty variables with the info we need
     while ($row = $result->fetch_assoc()) {
       $oldName = $row['name'];
       $oldContent = $row['content'];
@@ -47,16 +50,25 @@ if (isset($_GET['postId'])) {
         $oldPostUserId = $row['share_user_ref'];
       }
     }
-
+    // Put this data into posts table, this basically copies over a post but makes it so comments and likes go to the old one
     $query = "INSERT INTO `posts` (user_ID, name, content, post_time, likes, dislikes, reposts, video_link, share_ref, share_user_ref) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
     if ($stmt = $conn->prepare($query)) {
       $stmt->bind_param('ssssiiisii', $userId, $oldName, $oldContent, $postTime, $likes, $dislikes, $oldReposts, $oldVideoLink, $oldShareRef, $oldPostUserId);
+
       $stmt->execute();
+
       $stmt->close();
 
       if ($stmt = $conn->prepare("UPDATE posts SET reposts = ? WHERE id = ?;")) {
         $stmt->bind_param("ii", $oldReposts, $postId);
+
         $stmt->execute();
+        
+        $stmt->close();
+
+        mysqli_close($conn);
+        
         Header("Location: ../homepage/index.php");
         exit();
       }
