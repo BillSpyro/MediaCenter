@@ -8,6 +8,13 @@ if (!$_SESSION['id']) {
 <div class="post-form--div">
   <div>
 
+  <?php if (isset($_GET['error'])) {
+    if ($_GET['error'] == 1) {
+      echo "<p>There was an issue with your image upload.</p>";
+      echo "<p>Please make sure your image is under 5mb and is a .jpg, .png, or .jpeg file.</p>";
+    } 
+  } 
+  ?>
   <form class="post-form" action="../includes/post_inc.php" method="post" enctype="multipart/form-data">
   <p>Create Post</p>
   <hr>

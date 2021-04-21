@@ -11,9 +11,12 @@ if (isset($_SESSION['id']) && isset($_POST['comment'])) {
   $dateTime = date('Y-m-d H:i:s');
 
   $query = "INSERT INTO comments (user_ID, post_ID, posted_date, content) VALUES (?, ?, ?, ?);";
+
   if ($stmt = $conn->prepare($query)) {
     $stmt->bind_param('iiss', $userId, $postId, $dateTime, $comment);
+
     $stmt->execute();
+
     $stmt->close();
 
     //Getting ID of the post owner
@@ -44,6 +47,10 @@ if (isset($_SESSION['id']) && isset($_POST['comment'])) {
       while ($row = $result->fetch_array()) {
         $commentID = $row['id'];
       }
+
+      $stmt->close();
+
+      mysqli_close($conn);
     }
 
 

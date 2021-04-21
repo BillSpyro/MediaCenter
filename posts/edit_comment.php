@@ -1,21 +1,30 @@
 <?php
 include_once "../includes/header.php";
 include_once "../includes/dbc_inc.php";
+
+// make empty variables to be populated later
 if (isset($_GET['commentId'])) {
   $commentId = $_GET['commentId'];
   $oldContent;
   $postId;
   
   $query = "SELECT * FROM comments WHERE id = ?;";
+
   if ($stmt = $conn->prepare($query)) {
     $stmt->bind_param('i', $commentId);
+
     $stmt->execute();
+
     $result = $stmt->get_result();
+    // populate the empty variables with content and post_ID
     while ($row = $result->fetch_array()) {
       $oldContent = $row['content'];
       $postId = $row['post_ID'];
     }
+
     $stmt->close();
+
+    mysqli_close($conn);
   }
 }
 ?>
