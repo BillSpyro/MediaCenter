@@ -157,7 +157,8 @@ include_once "../posts/post_like_inc.php";
                                 ?>
                                 <div class="comment">
                                 <?php 
-                                    if ($row1['id'] == $_SESSION['id']) {
+                                    if ($row1['user_ID'] == $_SESSION['id']) {
+                                        // row1[14] is the comment's ID
                                         printf(<<<EOT
                                         <a class="comment-btn" href="../posts/edit_comment.php?commentId=%s">Edit Comment</a>
                                         <a class="comment-btn" href="../includes/delete_comment.php?commentId=%s&postId=%s">Delete Comment</a>
