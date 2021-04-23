@@ -106,7 +106,12 @@ if (isset($_GET['Action'])){
               }
             }
             ?>
+            <!-- Checks if the post was deleted -->
+            <?php if(isset($name)): ?>
               <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> created a new post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+            <?php else: ?>
+              <a href="../homepage/index.php#<?php echo $postID ?>">This post was deleted <?php echo $row['notification_time']; ?></a>
+          <?php endif ?>
               <!-- New Video notification -->
             <?php elseif ($row['type'] == 'New Video'): ?>
               <?php
