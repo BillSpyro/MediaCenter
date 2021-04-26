@@ -65,7 +65,12 @@ if (isset($_GET['Action'])){
           }
         }
         ?>
+        <!-- Checks if the post was deleted -->
+        <?php if(isset($name)): ?>
           <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> liked your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+        <?php else: ?>
+          <a href="../homepage/index.php#<?php echo $postID ?>">This like is gone because the post was deleted <?php echo $row['notification_time']; ?></a>
+      <?php endif ?>
           <!-- Comment notification -->
         <?php elseif ($row['type'] == 'Comment'): ?>
           <?php
@@ -86,7 +91,12 @@ if (isset($_GET['Action'])){
             }
           }
           ?>
+          <!-- Checks if the comment was deleted -->
+          <?php if(isset($name)): ?>
             <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> commented with, "<?php echo $comment ?>" on your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
+          <?php else: ?>
+            <a href="../homepage/index.php#<?php echo $postID ?>">This comment was deleted <?php echo $row['notification_time']; ?></a>
+        <?php endif ?>
             <!-- New Post notification -->
           <?php elseif ($row['type'] == 'New Post'): ?>
             <?php
@@ -130,7 +140,12 @@ if (isset($_GET['Action'])){
                 }
               }
               ?>
+              <!-- Checks if the video was deleted -->
+              <?php if(isset($videoID)): ?>
                 <a href="../video_post/videos.php#<?php echo $videoID ?>"><?php echo $name; ?> created a new video on <?php echo $row['notification_time']; ?></a>
+              <?php else: ?>
+                <a href="../homepage/index.php#<?php echo $videoID ?>">This video was deleted <?php echo $row['notification_time']; ?></a>
+            <?php endif ?>
               <!-- Update Profile notification -->
             <?php elseif ($row['type'] == 'Update Profile'): ?>
               <?php
