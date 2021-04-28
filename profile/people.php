@@ -166,11 +166,11 @@ header("Location: ../profile/people.php");
 
     <h2>Results</h2>
 
-    
+
     <div class="peoples">
     <?php while ($row = $result->fetch_array()):  ?>
       <div class="people">
-    <div><li><img src="<?php echo ['profile_picture'] ?>" alt="" width="100" height="100"></div>
+    <div><li><img src="<?php echo $row['profile_picture'] ?>" alt="" width="100" height="100"></div>
     <div><a class="name-people" href="../profile/profile.php?ID=<?php echo $row['id'] ?>"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></a></div>
     <?php if (isset($friendCheck[$up]) && $friendCheck[$up] == 1): ?>
     <span>Friends</span>
@@ -183,7 +183,7 @@ header("Location: ../profile/people.php");
     <?php $up += 1; ?>
     </div>
     <?php endwhile ?>
-   
+
   </div>
 
 
