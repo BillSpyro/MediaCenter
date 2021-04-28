@@ -140,13 +140,13 @@ $result = $conn->query($query);
                   <?php if ($_SESSION['id'] == $row1["user_ID"]):?>
                     <div class="edit-delete">
                       <div class="edit">
-                        <a class="edit-profile--link" href="edit_video_comment.php?ID=<?php echo $row1["id"] ?>&videoID=<?php echo $row1["video_ID"] ?>&content=<?php echo $row1["content"]?>"><img src="https://img.icons8.com/android/24/000000/edit.png"/></a> 
+                        <a class="edit-profile--link" href="edit_video_comment.php?ID=<?php echo $row1["id"] ?>&videoID=<?php echo $row1["video_ID"] ?>&content=<?php echo $row1["content"]?>"><img class="edit_icon"src="https://img.icons8.com/android/24/000000/edit.png"/></a> 
                       </div>
                     <div class="delete">
                       <form action="delete_video_comment.php" method="post">
                       <input type="text" name="video_id" value="<?php echo $row1["video_ID"]?>" hidden>
                         <input type="text" name="comment_id" value="<?php echo $row1["id"]?>" hidden>
-                        <button type='submit' name="delete_video_comment" ><img src="https://img.icons8.com/material-sharp/24/000000/filled-trash.png"/></button>
+                        <button type='submit' name="delete_video_comment" ><img class="delete_icon" src="https://img.icons8.com/material-sharp/24/000000/filled-trash.png"/></button>
                       </form>
                     </div>
                   </div>
@@ -159,12 +159,12 @@ $result = $conn->query($query);
                   <div>
                 <!-- get nusted comment   -->
                 <?php
-                $query_nusted_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.video_ID = '$video_id' and comments.comment_ID = '$comment_ID';";
-                $result3 = $conn->query($query_nusted_comments);
+                $query_nested_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.video_ID = '$video_id' and comments.comment_ID = '$comment_ID';";
+                $result3 = $conn->query($query_nested_comments);
                 ?>
-                <div class="nusted_comments">
+                <div class="nested_comments">
                 <?php while ($row3 = $result3->fetch_array()):  ?>
-                  <div class="nusted_comment">
+                  <div class="nested_comment">
                     <div class="header-comment">   
                         <div class="image">
                           <img src="<?php echo $row3['profile_picture'] ?>" alt="" width="30" height="30">
@@ -172,6 +172,22 @@ $result = $conn->query($query);
                         <div class="name-time">
                           <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replyed on <?php echo $row3["posted_date"]?></span></p>
                         </div>
+                        <?php if ($_SESSION['id'] == $row3["user_ID"]):?>
+                    <div class="edit-delete">
+                      <div class="edit">
+                      
+                        <a class="edit-profile--link" href="video_nested_comment/edit_video_nested_comment.php?ID=<?php echo $row3["id"] ?>&commentID=<?php echo $row3["comment_ID"] ?>&videoID=<?php echo $row3["video_ID"] ?>&content=<?php echo $row3["content"]?>"><img class="edit_icon" src="https://img.icons8.com/android/24/000000/edit.png"/></a> 
+                      </div>
+                    <div class="delete">
+                      <form action="video_nested_comment/delete_video_nested_comment.php" method="post">
+                        <input type="text" name="video_id" value="<?php echo $row3["video_ID"]?>" hidden>
+                        <input type="text" name="comment_id" value="<?php echo $row3["comment_ID"]?>" hidden>
+                        <input type="text" name="nested_comment_id" value="<?php echo $row3["id"]?>" hidden>
+                        <button type='submit' name="delete_video_comment" ><img class="delete_icon"src="https://img.icons8.com/material-sharp/24/000000/filled-trash.png"/></button>
+                      </form>
+                    </div>
+                  </div>
+                  <?php endif ?>
                     </div>
                     <div class="comment-one">
                     <p class="single-comment"><?php echo $row3["content"]?></p>
@@ -182,7 +198,7 @@ $result = $conn->query($query);
                   </div>
                   <!-- video comments comment  -->
                   <div>
-                  <form class="nusted_comment-form" action="video_nusted_comment/video_comment_comment_inc.php" method="POST">
+                  <form class="nested_comment-form" action="video_nested_comment/video_comment_comment_inc.php" method="POST">
                     <input type="text" name="videoId" value="<?php echo $row1["video_ID"];?>" hidden>
                     <input type="text" name="video_comment_ID" value="<?php echo $row1["id"];?>" hidden>
                     <input type='text' name='comment' placeholder="reply comment ... " required>

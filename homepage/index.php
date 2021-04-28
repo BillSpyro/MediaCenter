@@ -164,15 +164,15 @@ include_once "../posts/post_like_inc.php";
                                     <div class="comment-one">
                                         <p class="single-comment"><?php echo $row1["content"]?></p>
                                     </div>
-                                    <!-- get nusted comment   -->
+                                    <!-- get nested comment   -->
                                     <div>
                                     <?php
-                                    $query_nusted_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.post_ID = '$post_id' and comments.comment_ID = '$comment_ID';";
-                                    $result3 = $conn->query($query_nusted_comments);
+                                    $query_nested_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.post_ID = '$post_id' and comments.comment_ID = '$comment_ID';";
+                                    $result3 = $conn->query($query_nested_comments);
                                     ?>
-                                    <div class="nusted_comments">
+                                    <div class="nested_comments">
                                     <?php while ($row3 = $result3->fetch_array()):  ?>
-                                    <div class="nusted_comment">
+                                    <div class="nested_comment">
                                         <div class="header-comment">   
                                             <div class="image">
                                             <img src="<?php echo $row3['profile_picture'] ?>" alt="" width="30" height="30">
@@ -180,6 +180,24 @@ include_once "../posts/post_like_inc.php";
                                             <div class="name-time">
                                             <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replyed on <?php echo $row3["posted_date"]?></span></p>
                                             </div>
+                                            <!-- update nested comment -->
+                                            <?php if ($_SESSION['id'] == $row3["user_ID"]):?>
+                                            <div class="edit-delete">
+                                            <div class="edit">
+                                            
+                                            <a class="edit-profile--link" href="../posts/post_nested_comment/edit_nested_comment.php?ID=<?php echo $row3["id"] ?>&commentID=<?php echo $row3["comment_ID"] ?>&postID=<?php echo $row3["post_ID"] ?>&content=<?php echo $row3["content"]?>"><img class="edit_icon" src="https://img.icons8.com/android/24/000000/edit.png"/></a> 
+                                            </div>
+                                            <div class="delete">
+                                            <form action="../posts/post_nested_comment/delete_nested_comment.php" method="post">
+                                                <input type="text" name="post_id" value="<?php echo $row3["post_ID"]?>" hidden>
+                                                <input type="text" name="comment_id" value="<?php echo $row3["comment_ID"]?>" hidden>
+                                                <input type="text" name="nested_comment_id" value="<?php echo $row3["id"]?>" hidden>
+                                                <button type='submit' name="delete_video_comment" ><img class="delete_icon"src="https://img.icons8.com/material-sharp/24/000000/filled-trash.png"/></button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                        <?php endif ?>
+
                                         </div>
                                         <div class="comment-one">
                                         <p class="single-comment"><?php echo $row3["content"]?></p>
@@ -189,9 +207,9 @@ include_once "../posts/post_like_inc.php";
                                     </div>
                                     </div>
                                     
-                                    <!-- video comments comment  -->
+                                    <!-- post comments comment  -->
                                 <div>
-                                <form class="nusted_comment-form" action="../includes/post_nested_comment_inc.php" method="POST">
+                                <form class="nested_comment-form" action="../includes/post_nested_comment_inc.php" method="POST">
                                     <input type="text" name="postId" value="<?php echo $post_id;?>" hidden>
                                     <input type="text" name="post_comment_ID" value="<?php echo $comment_ID;?>" hidden>
                                     <input type='text' name='comment' placeholder="reply comment ... " required>
