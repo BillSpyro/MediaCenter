@@ -9,7 +9,7 @@ if(isset($_POST["delete_video_comment"])) {
     $sql = "DELETE  FROM  comments WHERE id = ? and video_ID = ?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: update_video.php?error=stmtfaild");
+        header("location: delete_video_comment.php?error=stmtfaild");
         exit();
     }
     mysqli_stmt_bind_param($stmt, "ss",  $comment_id, $video_id);

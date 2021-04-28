@@ -192,6 +192,25 @@ include_once "../posts/post_like_inc.php";
                                                         <div class="name-time">
                                                             <p><?php echo $row3["first_name"] . " " . $row3["last_name"]?>  <span>replied on <?php echo $row3["posted_date"]?></span></p>
                                                         </div>
+
+                                                        <!-- update and delete nested comments -->
+                                                        <?php if ($_SESSION['id'] == $row3["user_ID"]):?>
+                                                        <div class="edit-delete">
+                                                        <div class="edit">
+                                                        
+                                                        <a class="edit-profile--link" href="../posts/post_nested_comment/edit_nested_comment.php?ID=<?php echo $row3["id"] ?>&commentID=<?php echo $row3["comment_ID"] ?>&postID=<?php echo $row3["post_ID"] ?>&content=<?php echo $row3["content"]?>"><img class="edit_icon" src="https://img.icons8.com/android/24/000000/edit.png"/></a> 
+                                                        </div>
+                                                        <div class="delete">
+                                                        <form action="../posts/post_nested_comment/delete_nested_comment.php" method="post">
+                                                            <input type="text" name="post_id" value="<?php echo $row3["post_ID"]?>" hidden>
+                                                            <input type="text" name="comment_id" value="<?php echo $row3["comment_ID"]?>" hidden>
+                                                            <input type="text" name="nested_comment_id" value="<?php echo $row3["id"]?>" hidden>
+                                                            <button type='submit' name="delete_video_comment" ><img class="delete_icon"src="https://img.icons8.com/material-sharp/24/000000/filled-trash.png"/></button>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    <?php endif ?>
+                                                        
                                                     </div>
                                                     <div class="comment-one">
                                                         <p class="single-comment"><?php echo $row3["content"]?></p>
