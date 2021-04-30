@@ -184,7 +184,7 @@ justify-content: center;
 
 }
 
-.comment-form input:nth-child(2),  .nusted_comment-form input:nth-child(3){
+.comment-form input:nth-child(2),  .nested_comment-form input:nth-child(3){
     border: solid 1px white;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -192,17 +192,27 @@ justify-content: center;
     background-color:#F5F5F5;
 }
 
-.comment-form input:nth-child(3), .nusted_comment-form input:nth-child(4) {
+.comment-form input:nth-child(3), .nested_comment-form input:nth-child(4) {
     
     padding: 0.2rem;
 
 }
 
-.nusted_comment {
+.nested_comment {
     background-color: white;
     border-radius: 20px;
     margin-left: 4rem;
     padding-left: 1rem;
+}
+.edit_icon {
+    background-color: green;
+}
+.delete_icon {
+    background-color: red;
+    cursor: pointer;
+}
+.edit-delete {
+    padding-left: 4rem;
 }
 
 /* profile page css */
