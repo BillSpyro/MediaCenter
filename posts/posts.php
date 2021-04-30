@@ -24,7 +24,7 @@ if ($_SESSION['id']) {
       EOT, $row['id'], $row['name'], $row['post_time'], $row['content']);
 
       if ($row['video_link'] != null) {
-        printf("<img src='%s'></img>", $row['video_link']);
+        printf("<img class='post-image' src='%s'></img>", $row['video_link']);
       }
 
       $query2 = "SELECT * FROM comments WHERE post_ID = ?;";

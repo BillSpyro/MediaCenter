@@ -23,6 +23,11 @@ if ($shareStmt = $conn->prepare($shareQuery)):
         <?php if ($row['user_ID'] != $_SESSION['id']): ?>
         <a href='../includes/share_post.php?postId=<?php echo $row['id']?>'>Share</a>
         <?php endif; ?>
+
+        <?php if (is_null($row['video_link'])): ?>
+        <?php else: ?>
+           <img class="post-image" src=<?php echo $row['video_link']; ?>>
+        <?php endif; ?>
     </div>
     <?php $id = $shareRow["id"];?>
     <hr>
