@@ -94,6 +94,8 @@ li a.home-login {
 .post-image {
   height: 100%;
   width: 97.5%;
+  border-radius: 0 !important;
+  margin-top: 0 !important;
 }
 
 .header-post {
