@@ -37,13 +37,13 @@ if ($stmt = $conn->prepare($query)) {
             <li><a href="../auth/logout.php">Logout</a></li>
             <li><a href="../profile/profile.php?ID=<?php echo $_SESSION['id']?>">Your Profile</a></li>
             <li><a href="../profile/people.php">People</a></li>
+            <li><a href="../video_post/videos.php">Videos</a></li>
             <li><a href="../notifications/notifications.php?ID=<?php echo $_SESSION['id']?>">Notifications<?php if ($result > 0): ?><span>(<?php echo $result; ?>)</span><?php endif ?></a></li>
         <?php else: ?>
             <li><a href="../auth/register.php">Register</a></li>
             <li><a href="../auth/login.php">Log In</a></li>
         <?php endif ?>
             <li><a href="../homepage/index.php">Home</a></li>
-            <li><a href="../video_post/videos.php">Videos</a></li>
         </ul>
     </nav>
 </header>
