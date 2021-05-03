@@ -322,6 +322,10 @@ justify-content: center;
     margin-bottom: 1rem;
     border: 1px solid rosybrown;
 }
+#update_video_id  {
+    display: none;
+}
+
 
 .post-form .submit {
     width: 260px;
