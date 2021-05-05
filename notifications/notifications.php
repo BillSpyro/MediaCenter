@@ -92,7 +92,7 @@ if (isset($_GET['Action'])){
           }
           ?>
           <!-- Checks if the comment was deleted -->
-          <?php if(isset($name)): ?>
+          <?php if(isset($comment)): ?>
             <a href="../homepage/index.php#<?php echo $postID ?>"><?php echo $name; ?> commented with, "<?php echo $comment ?>" on your post, "<?php echo $postName; ?>" on <?php echo $row['notification_time']; ?></a>
           <?php else: ?>
             <a href="../homepage/index.php#<?php echo $postID ?>">This comment was deleted <?php echo $row['notification_time']; ?></a>
