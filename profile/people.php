@@ -148,7 +148,7 @@ header("Location: ../profile/people.php");
     <span><?php echo $error; ?></span>
     <?php endif ?>
 
-    <form action="../profile/people.php" method="post">
+    <form class="search_field" action="../profile/people.php" method="post">
 
       <label for="first_name">first name:</label>
       <input type="text" name="first_name">

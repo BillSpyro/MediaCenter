@@ -9,7 +9,7 @@ body {
 }
 
 .navs {
-    background-color: white;
+    background-color: #4169E1;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
     height: 80px;
     display: flex;
@@ -23,8 +23,12 @@ body {
 .navs li a {
     text-decoration: none;
     padding-left: 4rem;
-    color: blue;
+    color: white;
     font-size: 24px;
+}
+
+.navs li a:hover {
+    font-style: italic;
 }
 
 .register-form, .login-form, .edit-form {
@@ -152,7 +156,7 @@ justify-content: center;
     font-weight: normal;
 }
 .comment {
-    background-color: #F0F8FF;
+    background-color: khaki;
     border-radius: 20px;
     padding-left: 1rem;
     margin-top: 3rem;
@@ -185,19 +189,24 @@ justify-content: center;
 }
 
 .comment-form input:nth-child(2),  .nested_comment-form input:nth-child(3){
-    border: solid 1px white;
+    border: solid 1px green;
     border-radius: 1rem;
-    padding: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.7rem;
     width: 300px;
     background-color:#F5F5F5;
 }
 
 .comment-form input:nth-child(3), .nested_comment-form input:nth-child(4) {
-    
-    padding: 0.2rem;
-
+    background-color: royalblue;
+    padding: 0.7rem;
+    color: white;
+    border-radius: 45%;
+    font-size: 16px;
 }
-
+.comment-form input:nth-child(3):hover, .nested_comment-form input:nth-child(4):hover {
+    background-color: blue;
+}
 .nested_comment {
     background-color: white;
     border-radius: 20px;
@@ -214,7 +223,14 @@ justify-content: center;
 .edit-delete {
     padding-left: 4rem;
 }
+/* notification page */
+.notification {
+    background-color: aliceblue;
+    width: 700px;
+    padding: 1rem 1rem 1rem 1rem;
+    box-shadow: 2px 2px 4px 2px rgb(10 0 0 / 20%);
 
+}
 /* profile page css */
 
 
@@ -309,7 +325,7 @@ justify-content: center;
 }
 .post-form  {
 
-    background-color: white;
+    background-color: darkgoldenrod;
     width: 700px;
     border-radius: 10px;
     padding: 1rem 1rem 1rem 1rem;
@@ -320,7 +336,7 @@ justify-content: center;
     display: block;
     width: 250px;
     margin-bottom: 1rem;
-    border: 1px solid rosybrown;
+    border: 4px solid #2E8B57;
 }
 #update_video_id  {
     display: none;
@@ -333,11 +349,15 @@ justify-content: center;
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 0.3rem;
+    font-size: 18px;
+    padding: 0.7rem;
+}
+.post-form .submit:hover {
+    background-color: blue;
 }
 .table-about {
     background-color: #fff;
-    ;
+    
 }
 .table-about td:first-child {
     border-right: 1px solid black;
@@ -406,15 +426,29 @@ justify-content: center;
 }
 
 /* people page css */
+.search_field {
+    color: green;
+    font-size: 20px;
+}
+.search_field input {
+    border: solid 1px green;
+    border-radius: 1rem;
+   padding: 0.4rem;
+    
+}
 .peoples {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    
 
 
 }
 .peoples div {
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+.people {
+    margin-left: 2rem;
 }
 
 .peoples  a {
@@ -453,7 +487,9 @@ a.name-people:hover {
     box-shadow: 0 2px 4px 0 rgb(10 0 0 / 20%);
 }
 /* video page  */
-
+video {
+    border: 4px solid blue ;
+}
 
 .edit-delete {
     display: flex;
