@@ -182,7 +182,7 @@ include_once "../posts/post_like_inc.php";
                                                 $query_nusted_comments = "SELECT profile.*, comments.* FROM profile, comments WHERE comments.user_ID = profile.user_ID and comments.post_ID = '$post_id' and comments.comment_ID = '$comment_ID';";
                                                 $result3 = $conn->query($query_nusted_comments);
                                             ?>
-                                            <div class="nusted_comments">
+                                            <div class="nested_comment">
                                                 <?php while ($row3 = $result3->fetch_array()):  ?>
                                                 <div class="nusted_comment">
                                                     <div class="header-comment">   
